@@ -51,11 +51,11 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 <p>
 	<form>
 		<input type="hidden"  id="amount" name="amount" value="<?php echo $amount; ?>" />
-		<input type="hidden"  id="merchantReference" name="merchantReference" value="<?php echo $txnid; ?>" />
+		<input type="hidden"  id="txnid" name="txnid" value="<?php echo $txnid; ?>" />
 		<input type="hidden"  id="email" name="email" value="<?php echo $USER->email; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
 		<script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-		<button type="button" id="sub_button" value="pay" onClick="payWithRave()" />
+		<button type="button" id="sub_button" value="" onClick="payWithRave()" />Pay Now</button>
 	</form>
 </p>
 </div>
@@ -72,23 +72,23 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 }
 </style>
 
-<script>
+<script type ="text/javascript">
 		
-const btn = $('#sub_button').addEventListener('submit' , payWithRave())
+
 const email = $('input:email').val()
 const amount = $('input:amount').val()
-const txind = $('input:txnid').val()
+const txnid = $('input:txnid').val()
 const phone = $('input:phone').val()
 
 function payWithRave(){
-	const Api_publicKey = FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X ,
+	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X",
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
             customer_email: email,
 			amount: amount,
 			customer_phone: phone,
             currency: "NGN",
-            txref: txind,
+            txref: txnid,
             meta: [{
                 orderId:
             }],
