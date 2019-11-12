@@ -75,13 +75,14 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 <script type ="text/javascript">
 		
 
-const email = $('input:email').val()
-const amount = $('input:amount').val()
-const txnid = $('input:txnid').val()
-const phone = $('input:phone').val()
+
 
 function payWithRave(){
-	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X",
+	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
+    const email = $('input:email').val()
+    const amount = $('input:amount').val()
+    const txnid = $('input:txnid').val()
+    const phone = $('input:phone').val()
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
             customer_email: email,
