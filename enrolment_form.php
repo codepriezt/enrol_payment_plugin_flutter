@@ -100,7 +100,7 @@ function payWitRave(){
                 console.log("This is the response returned after a charge", response);
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
 					console.log(data);
-                    window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/ipn.php + "; 
+                    window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/ipn.php' + "; 
                 } else {
                     console.log(data);
                 }

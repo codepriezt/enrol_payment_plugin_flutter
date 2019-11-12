@@ -42,7 +42,7 @@ $id = required_param('id', PARAM_INT);
 $response = $DB->get_record('enrol_payumoney_nigeria', array('id' => $id));
 $responsearray = json_decode($response->auth_json, true);
 
-
+$safekey = get_config('enrol_payumoney' , 'safeKey');
 $txnid = $responsearray['txnid'];
 $amount = $responsearray['amount'];
 $transactionType = $responsearray['transactionType'];
