@@ -53,7 +53,8 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 		<input type="hidden"  id="amount" name="amount" value="<?php echo $amount; ?>" />
 		<input type="hidden"  id="txnid" name="txnid" value="<?php echo $txnid; ?>" />
 		<input type="hidden"  id="email" name="email" value="<?php echo $USER->email; ?>" />
-		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
+		<input type="hidden"  id="email" name="email" value="<?php echo $USER->firstname; ?>" />
+		<input type="hidden"  id="firstname" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
 </p>
@@ -81,6 +82,7 @@ function payWithRave(e){
     var  amount = $('#amount').val()
     var  txnid = $('#txnid').val()
     var phone = $('#phone').val()
+    var firstname = $('#firstname').val() 
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
             customer_email: email,
@@ -89,7 +91,7 @@ function payWithRave(e){
             currency: "NGN",
             txref: txnid,
             meta: [{
-                orderId:
+                firstname:firstname,
             }],
             onclose: function() {},
             callback: function(response) {
