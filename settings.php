@@ -29,9 +29,9 @@ if ($ADMIN->fulltree) {
     // Settings.
     $settings->add(new admin_setting_heading('enrol_payumoney_settings', '',
                    get_string('pluginname_desc', 'enrol_payumoney')));
-    $settings->add(new admin_setting_configtext('enrol_payumoney/safekey',
-                   get_string('safeKey', 'enrol_payumoney'),
-                   'Copy API safe Key from merchant account & paste here', '', PARAM_RAW));
+    $settings->add(new admin_setting_configtext('enrol_payumoney/secretKey',
+                   get_string('secretKey', 'enrol_payumoney'),
+                   'Copy API secret Key from merchant account & paste here', '', PARAM_RAW));
     $settings->add(new admin_setting_configcheckbox('enrol_payumoney/checkproductionmode',
                    get_string('checkproductionmode', 'enrol_payumoney'), '', 0));
     $settings->add(new admin_setting_configcheckbox('enrol_payumoney/mailstudents',
