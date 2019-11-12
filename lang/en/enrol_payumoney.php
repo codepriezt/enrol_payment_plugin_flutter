@@ -25,10 +25,8 @@
 $string['pluginname'] = 'PayUMoney';
 $string['pluginname_desc'] = 'The PayUMoney module allows you to set up paid courses.  If the cost for any course is zero, then students are not asked to pay for entry.  There is a site-wide cost that you set here as a default for the whole site and then a course setting that you can set for each course individually. The course cost overrides the site cost.';
 $string['Api']='PAYUMoney api current version';
-$string['username'] = 'PayUMoney merchant username';
-$string['password'] = 'PayUMoney merchant password';
-$string['safeKey']='PAYUMoney merchant safeKey';
-$sting['transactionType']='the type of transaction';
+$string['publicKey'] = 'PayUMoney merchant username';
+$string['secretKey'] = 'PayUMoney merchant password';
 $string['merchantReference']='unique merchant identifier for transaction';
 $string['supportedPaymentMethods']='list of card payment';
 $string['secure3d']='this will determine if the transaction went through';

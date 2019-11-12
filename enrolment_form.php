@@ -22,17 +22,12 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$username = 200208;
-$password = "g1Kzk8GY";
+
 $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 $amount = $cost;
-$productinfo = $coursefullname;
-$label = "Pay Now";
-$transactionType ="PAYMENT";
-// $returnUrl ="http://qa.payu.co.za/integration-qa/internal-tools/demos/developer/payu-redirect-payment-page/send-getTransaction-via-soap.php";
-// $cancelUrl="http://qa.payu.co.za/integration-qa/internal-tools/demos/developer/payu-redirect-payment-page/cancel-page.php"; 
-$supportedPaymentMethods ="DEBITCARD";
-$hash = '';
+
+
+
 
 
 
@@ -54,24 +49,13 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 <p><img alt="PayUMoney" src="<?php echo $CFG->wwwroot; ?>/enrol/payumoney/pix/payumoneynigeria.jpeg" /></p>
 <p>&nbsp;</p>
 <p>
-	<form method="post" action="" >
-		<input type="hidden" id="username" name="Username" value="<?php echo $username; ?>" />
-		<input type="hidden"  id="password" name="Password" value="<?php echo $password; ?>" />
+	<form>
 		<input type="hidden"  id="amount" name="amount" value="<?php echo $amount; ?>" />
-		<input type="hidden"  id="description" name="description" value="<?php echo $productinfo; ?>" />
-		<input type="hidden"  id="safeKey" name="safeKey" value="<?php echo $safeKey; ?>" />
 		<input type="hidden"  id="merchantReference" name="merchantReference" value="<?php echo $txnid; ?>" />
-		<input type="hidden"  id="transactionType" name="transactionType" value="<?php echo $transactionType; ?>" />	
-		<input type="hidden"  id="returnUrl" name="returnUrl" value="<?php echo $returnUrl; ?>" />		
-		<input type="hidden"  id="cancelUrl" name="cancelUrl" value="<?php echo $cancelUrl; ?>" />		
-		<input type="hidden"  id="firstname" name="firstname" value="<?php echo $USER->firstname; ?>" />
 		<input type="hidden"  id="email" name="email" value="<?php echo $USER->email; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
-		<input type="hidden"  name="surl" value="<?php echo $CFG->wwwroot; ?>/enrol/payumoney/ipn.php" />
-         <input type="hidden" name="udf1" value="<?php echo $udf1 ?>" />
-		<input type="hidden"  name="udf2" value="<?php echo $enrolperiod; ?>" />
-		
-		<input type="submit" id="sub_button" value="" onClick="makeOrder" />
+		<script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+		<button type="button" id="sub_button" value="" onClick="payWithRave()" />
 	</form>
 </p>
 </div>
@@ -87,11 +71,48 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
   height: 59px;
 }
 </style>
-<?php
-		echo '<script type="text/javascript">
-		window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/order.js?";
-		</script>'
-?>
+
+<script>
+		
+const btn = document.querySelector('#sub_button').addEventListener('submit' , payWithRave())
+const email = document.querySelector('#email').value
+const amount = document.querySelector('#cost').value
+const txind = document.querySelector('#txnid').value
+const phone = document.querySelector('#phone').value
+
+function payWitRave(){
+	const Api_publicKey = FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X ,
+  var x = getpaidSetup({
+            PBFPubKey: Api_publicKey ,
+            customer_email: email,
+			amount: amount,
+			customer_phone: phone,
+            currency: "NGN",
+            txref: txind,
+            meta: [{
+                orderId:
+            }],
+            onclose: function() {},
+            callback: function(response) {
+				var txref = response.tx.txRef; 
+				var data = response;
+								
+                console.log("This is the response returned after a charge", response);
+                if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
+					console.log(data);
+                    window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/ipn.php + "; 
+                } else {
+                    console.log(data);
+                }
+
+                x.close(); // use this to close the modal immediately after payment.
+            }
+        });
+    }
+		
+
+</script>
+
 
 	
 

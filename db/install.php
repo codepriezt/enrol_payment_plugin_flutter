@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
  * Sets up installation script.
  * @return void
  */
-function xmldb_enrol_payumoney_nigeria_install() {
+function xmldb_enrol_payumoney_install() {
     global $CFG, $DB;
 
 }
