@@ -54,8 +54,7 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 		<input type="hidden"  id="txnid" name="txnid" value="<?php echo $txnid; ?>" />
 		<input type="hidden"  id="email" name="email" value="<?php echo $USER->email; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
-		<script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
-		<button type="button" id="sub_button" value="" onClick="payWithRave()" />Pay Now</button>
+		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
 </p>
 </div>
@@ -71,18 +70,17 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
   height: 59px;
 }
 </style>
-
+<script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type ="text/javascript">
-		
+const btn = document.querySelector('#sub_button').addEventListener('click' , payWithRave);
 
+function payWithRave(e){
 
-
-function payWithRave(){
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
-    const email = $('input:email').val()
-    const amount = $('input:amount').val()
-    const txnid = $('input:txnid').val()
-    const phone = $('input:phone').val()
+    var email = $('#email').val()
+    var  amount = $('#amount').val()
+    var  txnid = $('#txnid').val()
+    var phone = $('#phone').val()
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
             customer_email: email,
@@ -109,6 +107,7 @@ function payWithRave(){
                 x.close(); // use this to close the modal immediately after payment.
             }
         });
+    e.preventDefault();
     }
 		
 
