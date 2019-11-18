@@ -33,12 +33,10 @@ $amount = $cost;
 
 //$invoice = date('Ymd') . "-" . $instance->courseid . "-" . hash('crc32', $txnid); //udf3
 $_SESSION['timestamp'] = $timestamp = time();
-// $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id;
-$udf1 = array('courseid'=>$instance->courseid,
-                'userId'=>$USER->id,
-                'instanceid'=>$instance->id ,
-                'contextid'=>$context->id,
-                'enrolperiod'=>$instance->enrolperiod);
+
+//course1d userid instanceid contextid enrolperiod
+$udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'.$instance->enrolperiod;
+
 
 // $enrolperiod = $instance->enrolperiod;//udf2
 //Hash Sequence
@@ -111,7 +109,7 @@ function payWithRave(e){
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
 					
-                    dx1 = {
+                     var dx1 = {
                         'data': data,
                         'ud':udf1
                     }
