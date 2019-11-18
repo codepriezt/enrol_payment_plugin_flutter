@@ -47,7 +47,7 @@ if (empty($_POST) or !empty($_GET)) {
 //print_r($enrolpayumoney);
 
 $enrolpayumoney = new stdClass();
-$record = $_POST['data'];
+$record = $_POST['verifydata'];
 var_dump($record);
 $enrolpayumoney->auth_json= json_encode($record);
 $enrolpayumoney->timeupdated = time();

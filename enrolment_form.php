@@ -133,17 +133,20 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var url = $('#url').val(); 
-            var data = verifydata ;
-            
-            $.post(url , {mydata:data},
-            function(data , status){
-                console.log('status: ' + status + ', data: ' + data.responseData);
-            },
-            'json');
-        
-            
+            var httpc = new XMLHttpRequest();
+            var url = $('#url').val();
+            httpc.open("POST" , url , true);
+            httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            httpc.setRequestHeader("Content-Length", verifydata.length);
+
+            httpc.onreadystatechange = function() { 
+           if(httpc.readyState == 4 && httpc.status == 200) { 
+            console.log(httpc.responseText); 
         }
+    };
+    
+        httpc.send(verifydata);
+    }
 
 </script>
 
