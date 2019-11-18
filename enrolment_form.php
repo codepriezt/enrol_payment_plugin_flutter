@@ -112,7 +112,7 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    verify(verifydata)
+                    window.location.href= "'.$CFG->wwwroot.'/enrol/payumoney/ipn.php?data='.$verifydata.'";
                   
                 } else {
                     console.log(data);
