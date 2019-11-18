@@ -134,12 +134,10 @@ function payWithRave(e){
                  data:{
                         data:verifydata
                     },
-                 success: data => {
-                     console.log(data);
+                 success: (data) => {
+                     window.location.href = url ;
                     },
-                error: ()=>{
-                        console.log(error);
-                    }
+                
            });
             
         }
