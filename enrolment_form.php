@@ -133,13 +133,13 @@ function payWithRave(e){
         function verify(verifydata)
         {   
             var url =  "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php";
-            
+            var data = verifydata
+            console.log(data);
+
             $.ajax({
                  method: 'POST',
                  url :url,
-                 data:{
-                        data:verifydata
-                    },
+                 data:{data:data},
                  function(data , status){
                      console.log(data , status)
                      if(status == 'success'){
