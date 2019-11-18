@@ -112,8 +112,8 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    window.location.href= "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php?id=2";
-                  
+                    verify(verifydata);
+                   
                 } else {
                     console.log(data);
                 }
@@ -126,7 +126,7 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var url =  "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php?id=2";
+            var url =  "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php";
             
             $.ajax({
                  method: 'POST',
@@ -134,8 +134,8 @@ function payWithRave(e){
                  data:{
                         data:verifydata
                     },
-                 success: (data , status) => {
-                     console.log(status , data);
+                 success: (status) => {
+                     console.log(status);
                     },
                 
            });
