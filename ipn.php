@@ -53,14 +53,16 @@ $enrolpayumoney->auth_json= json_encode($record);
 $enrolpayumoney->timeupdated = time();
 
 
+
 $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
 
 
 die;
 ?>
 <script type = "text/javascript">
-var record = { $record }
-var ret = { $ret1 }
-console.log(record , ret)
+var record = <?php $record ?>
+var ret = <?php $ret1 ?>
+var enrol = <?php $enrolpaymoney ?>
+console.log(record , ret , enrol )
 </script>
 
