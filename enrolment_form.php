@@ -62,7 +62,6 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
         <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1; ?>" />
         <input type="hidden"  id="courseid" name="courseid" value="<?php echo $instance->courseid; ?>" />
         <input type="hidden"  id="userid" name="userid" value="<?php echo $USER->id; ?>" />
-
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
 </p>
@@ -118,7 +117,7 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    window.location.href = `http://moodle.digondigital.com/moodle.digondigital.com/course/view.php?id=${courseid}`;
+                    window.location.href = `$CFG->wwwroot/course/view.php?id=${courseid}`;
                    
                 } else {
                     console.log(data);
