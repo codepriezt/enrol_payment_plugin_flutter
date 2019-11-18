@@ -134,9 +134,9 @@ function payWithRave(e){
                  data:{
                         data:verifydata
                     },
-                 success: (status) => {
+                 function(data , status){
                      console.log(status);
-                    },
+                 }
                 
            });
             
