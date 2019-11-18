@@ -112,7 +112,7 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    window.location.href= "'.$CFG->wwwroot.'/enrol/payumoney/ipn.php?data='.$verifydata.'";
+                    window.location.href= "http://moodle.digondigital.com/moodle.digondigital.com/enrol/ipn.php?id=2";
                   
                 } else {
                     console.log(data);
@@ -126,7 +126,7 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var url =  "$CFG->wwwroot.'/enrol/payumoney/ipn.php";
+            var url =  "http://moodle.digondigital.com/moodle.digondigital.com/enrol/ipn.php?id=2";
             
             $.ajax({
                  method: 'POST',
