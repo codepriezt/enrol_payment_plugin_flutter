@@ -134,18 +134,11 @@ function payWithRave(e){
         {   
             var url =  "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php";
             var data = verifydata
-            $.ajax({
-                 method: 'POST',
-                 url :url,
-                 data:data,
-                 function(data , status){
-                     console.log(data , status)
-                     if(status == 'success'){
-                     window.location.href = "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php";
-                   }
-                 }
-                
-           });
+            
+            $.post(url,{data:data},
+            function(data , status){
+                console.log('status':status , 'data':data);
+            });
             
         }
 
