@@ -48,9 +48,10 @@ if (empty($_POST) or !empty($_GET)) {
 
 $enrolpayumoney = new stdClass();
 $record = $_POST['data'];
+var_dump($record);
 $enrolpayumoney->auth_json= json_encode($record);
 $enrolpayumoney->timeupdated = time();
-print_r($enrolpaymoney);
+
 
 $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
 

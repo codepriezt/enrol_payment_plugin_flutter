@@ -95,6 +95,7 @@ function payWithRave(e){
     const udf1 = $('#udf1').val()
     const courseid = $('#courseid').val()
     const userid = $('#userid').val()
+     const currency = 'NG'?'NGN':'USD'
 
 
   var x = getpaidSetup({
@@ -102,7 +103,7 @@ function payWithRave(e){
             customer_email: email,
 			amount: amount,
 			customer_phone: phone,
-            currency: "NGN",
+            currency: currency,
             txref: txnid,
             meta: [{
                 firstname:firstname,
@@ -118,6 +119,7 @@ function payWithRave(e){
                         'ud':udf1
                     };
                  verify(verifydata);
+                 
                 } else {
                     console.log(data);
                 }
@@ -139,7 +141,9 @@ function payWithRave(e){
                         data:verifydata
                     },
                  function(data , status){
+                     if(status == 'success'){
                      window.location.href = "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php";
+                   }
                  }
                 
            });
