@@ -55,7 +55,7 @@ print_r($enrolpaymoney);
 $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
 
 
-// echo '<script type="text/javascript">
-//      window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/update.php?id='.$ret1.'";
-//      </script>';
-// die;
+echo '<script type="text/javascript">
+     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/update.php?id='.$ret1.'";
+     </script>';
+die;

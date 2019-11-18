@@ -27,12 +27,12 @@ require_once("$CFG->dirroot/enrol/payumoney/lib.php");
 
 $id = required_param('id', PARAM_INT);
 
-// if (!$course = $DB->get_record("course", array("id" => $id))) {
-//     redirect($CFG->wwwroot);
-// }
+if (!$course = $DB->get_record("course", array("id" => $id))) {
+    redirect($CFG->wwwroot);
+}
 
-// $context = context_course::instance($course->id, MUST_EXIST);
-// $PAGE->set_context($context);
+$context = context_course::instance($course->id, MUST_EXIST);
+$PAGE->set_context($context);
 
 require_login();
 
@@ -43,8 +43,8 @@ if (!empty($SESSION->wantsurl)) {
     $destination = "$CFG->wwwroot/course/view.php?id=$course->id";
 }
 
-// $fullname = format_string($course->fullname, true, array('context' => $context));
-$fullname = format_string($course->fullname , true);
+$fullname = format_string($course->fullname, true, array('context' => $context));
+// $fullname = format_string($course->fullname , true);
 
 if (is_enrolled($course, null, '', true)) {
     redirect($destination, get_string('paymentthanks', '', $fullname));
@@ -52,7 +52,7 @@ if (is_enrolled($course, null, '', true)) {
     $PAGE->set_url($destination);
     echo $OUTPUT->header();
     $a = new stdClass();
-    // $a->teacher = get_string('defaultcourseteacher');
-    // $a->fullname = $fullname;
-    notice(get_string('paymentsuccessful', '', $a), $destination);
+    $a->teacher = get_string('defaultcourseteacher');
+    $a->fullname = $fullname;
+    notice(get_string('paymentsorry', '', $a), $destination);
 }

@@ -51,8 +51,8 @@ $useremail = $responsearray['email'];
 $userfirstname = $responsearray['firstname'];
 $productinfo = $responsearray['productinfo'];
 $status = $responsearray['status'];
-$udf1 = $responsearray['udf1'];
-$udf2 = $responsearray['udf2'];
+$udf1 = $responsearray['ud'];
+
 
 // $str = $status . "|||||||||" . $udf2. "|" . $udf1 . "|" . $useremail . "|" . $userfirstname . "|" . $productinfo . "|" . $amount . "|" . $txnid . "|" ;
 
@@ -62,7 +62,7 @@ $udf2 = $responsearray['udf2'];
 //     print_error("We can't validate your transaction. Please try again!!"); die;
 // }
 
-$arraycourseinstance = explode('-', $responsearray['udf1']);
+$arraycourseinstance = explode('-', $responsearray['ud']);
 if (empty($arraycourseinstance) || count($arraycourseinstance) < 4) {
     print_error("Received an invalid payment notification!! (Fake payment?)"); die;
 }
