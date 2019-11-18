@@ -55,7 +55,7 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 		<input type="hidden"  id="email" name="email" value="<?php echo $USER->email; ?>" />
 		<input type="hidden"  id="firstname" name="firstname" value="<?php echo $USER->firstname; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
-        <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1 ?>" />
+        <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1; ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
 </p>
