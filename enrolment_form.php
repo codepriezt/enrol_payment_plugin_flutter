@@ -134,7 +134,8 @@ function payWithRave(e){
                  data:{
                         data:verifydata
                     },
-                 success: (data) => {
+                 success: (response) => {
+                     console.log(response);
                      window.location.href = "'.$CFG->wwwroot.'/enrol/payumoney/ipn.php?id'";
                     },
                 
