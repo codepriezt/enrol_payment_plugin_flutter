@@ -117,7 +117,7 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    window.location.href = `$CFG->wwwroot/course/view.php?id=${courseid}`;
+                    window.location.href =`http://moodle.digondigital.com/moodle.digondigital.com/enrol/course/view.php?id=${courseid}`;
                    
                 } else {
                     console.log(data);
