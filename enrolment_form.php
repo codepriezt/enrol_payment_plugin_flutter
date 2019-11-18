@@ -133,10 +133,9 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var url = $('#url').val();
-            console.log(url);
+            var url = $('#url').val(); 
             var data = verifydata ;
-
+            
             $.post(url , {mydata:data},
             function(data , status){
                 console.log('status: ' + status + ', data: ' + data.responseData);

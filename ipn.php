@@ -56,7 +56,11 @@ $enrolpayumoney->timeupdated = time();
 $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
 
 
-echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/update.php?id='.$ret1.'";
-     </script>';
 die;
+?>
+<script type = "text/javascript">
+var record = { $record }
+var ret = { $ret1 }
+console.log(record , ret)
+</script>
+
