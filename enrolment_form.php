@@ -60,6 +60,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 		<input type="hidden"  id="firstname" name="firstname" value="<?php echo $USER->firstname; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
         <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1; ?>" />
+        <input type="hidden"  id="url" name="surl" value="<?php echo $CFG->wwwroot; ?>/enrol/payumoney/ipn.php" />
         <input type="hidden"  id="courseid" name="courseid" value="<?php echo $instance->courseid; ?>" />
         <input type="hidden"  id="userid" name="userid" value="<?php echo $USER->id; ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
@@ -132,7 +133,8 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var url =  "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/ipn.php";
+            var url = $('#url').val();
+            console.log(url);
             var data = verifydata ;
 
             $.post(url , {mydata:data},
