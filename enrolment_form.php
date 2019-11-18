@@ -79,8 +79,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type ="text/javascript">
 const btn = document.querySelector('#sub_button').addEventListener('click' , payWithRave);
-const udf1 = $('#udf1').val()
-console.log(udf1);
+
 
 
 function payWithRave(e){
@@ -112,7 +111,7 @@ function payWithRave(e){
                      var verifydata = {
                         'data': data,
                         'ud':udf1
-                    }
+                    };
                     verify(verifydata)
                   
                 } else {
@@ -136,8 +135,11 @@ function payWithRave(e){
                         data:verifydata
                     }    
                  } ,
-                 success: function( data ) {
-                     console.log( data );
+                 success: data => {
+                     console.log(data);
+                    },
+                    error: ()=>{
+                        console.log(error);
                     }
            });
             
