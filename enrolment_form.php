@@ -117,7 +117,7 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    window.location.href ="http://moodle.digondigital.com/moodle.digondigital.com/course/view.php?id=2";
+                    window.location.href =`http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/return.php?id=${courseid}`;
                 } else {
                     console.log(data);
                 }

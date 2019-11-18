@@ -27,9 +27,9 @@ require_once("$CFG->dirroot/enrol/payumoney/lib.php");
 
 $id = required_param('id', PARAM_INT);
 
-if (!$course = $DB->get_record("course", array("id" => $id))) {
-    redirect($CFG->wwwroot);
-}
+// if (!$course = $DB->get_record("course", array("id" => $id))) {
+//     redirect($CFG->wwwroot);
+// }
 
 $context = context_course::instance($course->id, MUST_EXIST);
 $PAGE->set_context($context);
@@ -51,7 +51,7 @@ if (is_enrolled($context, null, '', true)) {
     $PAGE->set_url($destination);
     echo $OUTPUT->header();
     $a = new stdClass();
-    $a->teacher = get_string('defaultcourseteacher');
-    $a->fullname = $fullname;
-    notice(get_string('paymentsorry', '', $a), $destination);
+    // $a->teacher = get_string('defaultcourseteacher');
+    // $a->fullname = $fullname;
+    notice(get_string('paymentsuccessful', '', $a), $destination);
 }
