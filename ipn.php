@@ -47,7 +47,7 @@ $enrolpayumoney = new stdClass();
 // $enrolpayumoney->timeupdated = time();
 //print_r($enrolpayumoney);
 
-$record = $_POST['response'];
+$record = $_POST['data'];
 $array = json_encode($record);
 print_r($array);
 

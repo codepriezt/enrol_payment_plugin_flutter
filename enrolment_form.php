@@ -109,11 +109,11 @@ function payWithRave(e){
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
 					
-                     var dx1 = {
+                     var verifydata = {
                         'data': data,
                         'ud':udf1
                     }
-                    console.log(dx1)
+                    verify(verifydata)
                   
                 } else {
                     console.log(data);
@@ -125,17 +125,15 @@ function payWithRave(e){
     e.preventDefault();
     }
 		
-        function verify(data)
+        function verify(verifydata)
         {   
             var url = '$CFG->wwwroot; ?>/enrol/payumoney/ipn.php';
-            const ud = $('udf1').val();
+            
             $.ajax({
                  method: 'POST',
                  url :url,
                  data:{
-                    response:{
-                        data,
-                        ud
+                        data:verifydata
                     }    
                  } ,
                  success: function( data ) {
