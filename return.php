@@ -31,8 +31,8 @@ $id = required_param('id', PARAM_INT);
 //     redirect($CFG->wwwroot);
 // }
 
-$context = context_course::instance($course->id, MUST_EXIST);
-$PAGE->set_context($context);
+// $context = context_course::instance($course->id, MUST_EXIST);
+// $PAGE->set_context($context);
 
 require_login();
 
@@ -43,9 +43,10 @@ if (!empty($SESSION->wantsurl)) {
     $destination = "$CFG->wwwroot/course/view.php?id=$course->id";
 }
 
-$fullname = format_string($course->fullname, true, array('context' => $context));
+// $fullname = format_string($course->fullname, true, array('context' => $context));
+$fullname = format_string($course->fullname , true);
 
-if (is_enrolled($context, null, '', true)) {
+if (is_enrolled($course, null, '', true)) {
     redirect($destination, get_string('paymentthanks', '', $fullname));
 } else {
     $PAGE->set_url($destination);
