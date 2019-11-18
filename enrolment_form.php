@@ -133,12 +133,11 @@ function payWithRave(e){
                  url :url,
                  data:{
                         data:verifydata
-                    }    
-                 } ,
+                    },
                  success: data => {
                      console.log(data);
                     },
-                    error: ()=>{
+                error: ()=>{
                         console.log(error);
                     }
            });
