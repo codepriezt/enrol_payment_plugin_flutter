@@ -60,6 +60,9 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 		<input type="hidden"  id="firstname" name="firstname" value="<?php echo $USER->firstname; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
         <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1; ?>" />
+        <input type="hidden"  id="courseid" name="courseid" value="<?php echo $instance->courseid; ?>" />
+        <input type="hidden"  id="userid" name="userid" value="<?php echo $USER->id; ?>" />
+
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
 </p>
@@ -91,6 +94,9 @@ function payWithRave(e){
     var phone = $('#phone').val()
     var firstname = $('#firstname').val() 
     const udf1 = $('#udf1').val()
+    const courseid = $('#courseid').val()
+    const userid = $('#userid').val()
+
 
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
@@ -112,7 +118,7 @@ function payWithRave(e){
                         'data': data,
                         'ud':udf1
                     };
-                    verify(verifydata);
+                    window.location.href = `http://moodle.digondigital.com/moodle.digondigital.com/course/view.php?id=${courseid}`;
                    
                 } else {
                     console.log(data);
