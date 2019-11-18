@@ -38,6 +38,7 @@ require_once($CFG->libdir . '/filelphp');
 global $DB, $CFG , $data;
 
 $id = required_param('id', PARAM_INT);
+print_r($id);
 
 $response = $DB->get_record('enrol_payumoney_nigeria', array('id' => $id));
 
@@ -46,7 +47,6 @@ $responsearray = json_decode($response->auth_json, true);
 
 $txnid = $responsearray['txnid'];
 $amount = $responsearray['amount'];
-
 $useremail = $responsearray['email'];
 $userfirstname = $responsearray['firstname'];
 $productinfo = $responsearray['productinfo'];

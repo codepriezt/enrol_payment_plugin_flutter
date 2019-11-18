@@ -41,17 +41,18 @@ if (empty($_POST) or !empty($_GET)) {
     print_error("Sorry, you can not use the script that way."); die;
 }
 
-$enrolpayumoney = new stdClass();
 // $enrolpayumoney = json_encode($_POST);
 
-// $enrolpayumoney->timeupdated = time();
+
 //print_r($enrolpayumoney);
 
+$enrolpayumoney = new stdClass();
 $record = $_POST['data'];
-$array = json_encode($record);
-print_r($array);
+$enrolpayumoney->auth_json= json_encode($record);
+$enrolpayumoney->timeupdated = time();
+print_r($enrolpaymoney);
 
-// $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
+$ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
 
 
 // echo '<script type="text/javascript">
