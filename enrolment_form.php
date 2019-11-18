@@ -126,7 +126,7 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var url =  "'.$CFG->wwwroot.'/enrol/payumoney/ipn.php?id'";
+            var url =  "$CFG->wwwroot.'/enrol/payumoney/ipn.php";
             
             $.ajax({
                  method: 'POST',
@@ -134,9 +134,8 @@ function payWithRave(e){
                  data:{
                         data:verifydata
                     },
-                 success: (response) => {
-                     console.log(response);
-                     window.location.href = "'.$CFG->wwwroot.'/enrol/payumoney/ipn.php?id'";
+                 success: (data , status) => {
+                     console.log(status , data);
                     },
                 
            });
