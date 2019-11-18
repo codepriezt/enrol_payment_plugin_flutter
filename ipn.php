@@ -41,7 +41,7 @@ if (empty($_POST) or !empty($_GET)) {
     print_error("Sorry, you can not use the script that way."); die;
 }
 
-// $enrolpayumoney = new stdClass();
+$enrolpayumoney = new stdClass();
 // $enrolpayumoney = json_encode($_POST);
 
 // $enrolpayumoney->timeupdated = time();

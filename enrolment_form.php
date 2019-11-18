@@ -33,11 +33,17 @@ $amount = $cost;
 
 //$invoice = date('Ymd') . "-" . $instance->courseid . "-" . hash('crc32', $txnid); //udf3
 $_SESSION['timestamp'] = $timestamp = time();
-$udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id;
-$enrolperiod = $instance->enrolperiod;//udf2
+// $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id;
+$udf1 = array('courseid'=>$instance->courseid,
+                'userId'=>$USER->id,
+                'instanceid'=>$instance->id ,
+                'contextid'=>$context->id,
+                'enrolperiod'=>$instance->enrolperiod);
+
+// $enrolperiod = $instance->enrolperiod;//udf2
 //Hash Sequence
-$hashSequence = $username . "|" . $txnid . "|" . $amount . "|" . $productinfo . "|" . $USER->firstname . "|" . $USER->email . "|" . $udf1 . "|" . $enrolperiod . "|||||||||" . $password;
-$fingerprint = strtolower(hash('sha512', $hashSequence));
+// $hashSequence = $username . "|" . $txnid . "|" . $amount . "|" . $productinfo . "|" . $USER->firstname . "|" . $USER->email . "|" . $udf1 . "|" . $enrolperiod . "|||||||||" . $password;
+// $fingerprint = strtolower(hash('sha512', $hashSequence));
 
 
 ?>
@@ -87,6 +93,8 @@ function payWithRave(e){
     var  txnid = $('#txnid').val()
     var phone = $('#phone').val()
     var firstname = $('#firstname').val() 
+    const udf1 = $('#udf1').val()
+
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
             customer_email: email,
@@ -102,8 +110,12 @@ function payWithRave(e){
 				var txref = response.tx.txRef; 
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
-					console.log(data);
-                    verify(data)
+					
+                    dx1 = {
+                        'data': data,
+                        'ud':udf1
+                    }
+                    console.log(dx1)
                   
                 } else {
                     console.log(data);

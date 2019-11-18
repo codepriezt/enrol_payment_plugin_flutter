@@ -54,13 +54,13 @@ $status = $responsearray['status'];
 $udf1 = $responsearray['udf1'];
 $udf2 = $responsearray['udf2'];
 
-$str = $status . "|||||||||" . $udf2. "|" . $udf1 . "|" . $useremail . "|" . $userfirstname . "|" . $productinfo . "|" . $amount . "|" . $txnid . "|" ;
+// $str = $status . "|||||||||" . $udf2. "|" . $udf1 . "|" . $useremail . "|" . $userfirstname . "|" . $productinfo . "|" . $amount . "|" . $txnid . "|" ;
 
 
 
-if ($generatedhash != $responsearray['hash']) {
-    print_error("We can't validate your transaction. Please try again!!"); die;
-}
+// if ($generatedhash != $responsearray['hash']) {
+//     print_error("We can't validate your transaction. Please try again!!"); die;
+// }
 
 $arraycourseinstance = explode('-', $responsearray['udf1']);
 if (empty($arraycourseinstance) || count($arraycourseinstance) < 4) {
@@ -87,7 +87,6 @@ if (! $plugininstance = $DB->get_record("enrol", array("id" => $arraycourseinsta
 $enrolpayumoney = $userenrolments = $roleassignments = new stdClass();
 
 $enrolpayumoney->id = $id;
-$enrolpayumoney->item_name = $responsearray['productinfo'];
 $enrolpayumoney->courseid = $arraycourseinstance[0];
 $enrolpayumoney->userid = $arraycourseinstance[1];
 $enrolpayumoney->instanceid = $arraycourseinstance[2];
