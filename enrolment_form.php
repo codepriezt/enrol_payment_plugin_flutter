@@ -53,9 +53,9 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 		<input type="hidden"  id="amount" name="amount" value="<?php echo $amount; ?>" />
 		<input type="hidden"  id="txnid" name="txnid" value="<?php echo $txnid; ?>" />
 		<input type="hidden"  id="email" name="email" value="<?php echo $USER->email; ?>" />
-		<input type="hidden"  id="email" name="email" value="<?php echo $USER->firstname; ?>" />
-		<input type="hidden"  id="firstname" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
-        <input type="hidden"  id ="surl" name="surl" value="<?php echo $CFG->wwwroot; ?>/enrol/payumoney/ipn.php" />
+		<input type="hidden"  id="firstname" name="firstname" value="<?php echo $USER->firstname; ?>" />
+		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
+        <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1 ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
 </p>
@@ -75,8 +75,8 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type ="text/javascript">
 const btn = document.querySelector('#sub_button').addEventListener('click' , payWithRave);
-const surl  = $('#surl').val();
-console.log(surl);
+const udf1 = $('udf1').val()
+console.log(udf1);
 
 
 function payWithRave(e){
@@ -103,7 +103,8 @@ function payWithRave(e){
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
 					console.log(data);
-                    verify(data);
+                    verify(data)
+                  
                 } else {
                     console.log(data);
                 }
@@ -113,17 +114,26 @@ function payWithRave(e){
         });
     e.preventDefault();
     }
-
-
-    function verify(data)
-    {
-        var url = '$CFG->wwwroot; ?>/enrol/payumoney/ipn.php' + data ;
-
-        $.ajax({
-            url
-        })
-    }
 		
+        function verify(data)
+        {   
+            var url = '$CFG->wwwroot; ?>/enrol/payumoney/ipn.php';
+            const ud = $('udf1').val();
+            $.ajax({
+                 method: 'POST',
+                 url :url,
+                 data:{
+                    response:{
+                        data,
+                        ud
+                    }    
+                 } ,
+                 success: function( data ) {
+                     console.log( data );
+                    }
+           });
+            
+        }
 
 </script>
 

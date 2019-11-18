@@ -35,21 +35,26 @@ require_once($CFG->libdir.'/eventslib.php');
 require_once($CFG->libdir.'/enrollib.php');
 require_once($CFG->libdir . '/filelib.php');
 
-global $DB, $CFG;
+global $DB, $CFG ;
 
 if (empty($_POST) or !empty($_GET)) {
     print_error("Sorry, you can not use the script that way."); die;
 }
 
-$enrolpayumoney = new stdClass();
-$enrolpayumoney->auth_json = json_encode($_POST);
-$enrolpayumoney->timeupdated = time();
+// $enrolpayumoney = new stdClass();
+// $enrolpayumoney = json_encode($_POST);
+
+// $enrolpayumoney->timeupdated = time();
 //print_r($enrolpayumoney);
 
-$ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
+$record = $_POST['response'];
+$array = json_encode($record);
+print_r($array);
+
+// $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
 
 
-echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/update.php?id='.$ret1.'";
-     </script>';
-die;
+// echo '<script type="text/javascript">
+//      window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/update.php?id='.$ret1.'";
+//      </script>';
+// die;
