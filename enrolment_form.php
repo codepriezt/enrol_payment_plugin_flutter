@@ -75,7 +75,7 @@ $fingerprint = strtolower(hash('sha512', $hashSequence));
 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type ="text/javascript">
 const btn = document.querySelector('#sub_button').addEventListener('click' , payWithRave);
-const udf1 = $('udf1').val()
+const udf1 = $('#udf1').val()
 console.log(udf1);
 
 
