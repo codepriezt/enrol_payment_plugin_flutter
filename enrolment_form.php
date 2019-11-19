@@ -144,6 +144,7 @@ function payWithRave(e){
                 }
             
             });
+        }
 </script>
 
 
