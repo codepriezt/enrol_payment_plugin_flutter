@@ -60,7 +60,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 		<input type="hidden"  id="firstname" name="firstname" value="<?php echo $USER->firstname; ?>" />
 		<input type="hidden"  id="phone" name="phone" value="<?php echo $_SESSION['timestamp']; ?>" />
         <input type="hidden"  id="udf1" name="udf1" value="<?php echo $udf1; ?>" />
-        <input type="hidden"  id="url" name="surl" value="<?php echo $CFG->wwwroot; ?>/enrol/payumoney/record.php" />
+        
         <input type="hidden"  id="courseid" name="courseid" value="<?php echo $instance->courseid; ?>" />
         <input type="hidden"  id="userid" name="userid" value="<?php echo $USER->id; ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
@@ -93,7 +93,6 @@ function payWithRave(e){
     var  txnid = $('#txnid').val()
     var phone = $('#phone').val()
     var firstname = $('#firstname').val() 
-    const udf1 = $('#udf1').val()
     const courseid = $('#courseid').val()
     const userid = $('#userid').val()
     const currency = 'NG'?'NGN':'USD'
@@ -114,8 +113,8 @@ function payWithRave(e){
 				var txref = response.tx.txRef; 
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
-                        console.log(data);
-					
+                        
+                        verify(data);
                 } else {
                     console.log(data);
                 }
@@ -126,18 +125,27 @@ function payWithRave(e){
     e.preventDefault();
     }
 		
-        function verify(verifydata)
+        function verify(data)
         {   
-           
-            var url = $('#url').val();
-            console.log(url);
-            var vx = verifydata;
+            var txref = data.tx.txRef
+            var amount = data.tx.amount
+            var status = data.tx.status
+            var currency = data.tx.currency
+            var email = data.tx. customer.email  
+            var url = "$CFG->wwwroot/enrol/payumoney/record.php";
+            var  udf1 = $('#udf1').val()
+            var ud = udf1.split(',');
+
+            console.log(url , txref , amount , status , email , ud);
+            
             
         
                 $.ajax({
                     type:"POST",
                     url:url,
-                    data:{gg:vx},
+                    data:{
+
+                    },
                     success:function(data){
                     console.log(data);
                     
