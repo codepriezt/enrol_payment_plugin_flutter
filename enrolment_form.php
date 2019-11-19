@@ -136,8 +136,9 @@ function payWithRave(e){
             var httpc = new XMLHttpRequest();
             var url = $('#url').val();
             console.log(url);
+            console.log(verifydata);
             httpc.open("POST" , url , true);
-            httpc.setRequestHeader("Content-Length", verifydata.length);
+            httpc.setRequestHeader("Content-Length", params.length);
             httpc.onreadystatechange = function() { 
            if(httpc.readyState == 4 && httpc.status == 200) { 
             console.log(httpc.responseText); 
