@@ -136,18 +136,24 @@ function payWithRave(e){
             var httpc = new XMLHttpRequest();
             var url = $('#url').val();
             console.log(url);
-            var data = JSON.stringify(verifydata);
-            console.log(data);
-            httpc.open("POST" , url , true);
-            httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            httpc.onreadystatechange = function() { 
-           if(httpc.readyState == 4 && httpc.status == 200) { 
-            console.log(httpc.responseText); 
+            var vx = JSON.stringify(verifydata);
+            console.log(vx);
+        //     httpc.open("POST" , url , true);
+        //     httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        //     httpc.onreadystatechange = function() { 
+        //    if(httpc.readyState == 4 && httpc.status == 200) { 
+        //     console.log(httpc.status); 
+        // }
+                        $.ajax({
+                            type:'POST',
+                            url:url,
+                            data:{data:vx},
+                            success:function(response){
+                            console.log(response);
+                        }
+                    
+                    });
         }
-    };
-    
-     httpc.send(data);
-    }
 
 </script>
 
