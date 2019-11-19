@@ -1,5 +1,5 @@
 <?php
-$record = $_POST['data'];
+$record = $_POST['gg'];
 var_dump($record);
 
 ?>

@@ -133,18 +133,21 @@ function payWithRave(e){
 		
         function verify(verifydata)
         {   
-            var httpc = new XMLHttpRequest();
+           
             var url = $('#url').val();
             console.log(url);
-            var vx = JSON.stringify(verifydata);
+            var vx = verifydata;
             console.log(vx);
         
                 $.ajax({
                     type:'POST',
                     url:url,
-                    data:{data:vx},
+                    data:{gg:vx},
                     success:function(response){
                     console.log(response);
+                    if(response.status == 'success'){
+                        window.location.href= url;
+                    }
                 }
             
             });
