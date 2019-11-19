@@ -132,7 +132,7 @@ function payWithRave(e){
             var status = data.tx.status
             var currency = data.tx.currency
             var email = data.tx.customer.email  
-            var url = <?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
+            var url = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
             var  udf1 = $('#udf1').val()
             var ud = udf1.split(',');
             var courseid = $('#courseid').val()
