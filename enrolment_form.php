@@ -137,15 +137,15 @@ function payWithRave(e){
             var url = $('#url').val();
             console.log(url);
             var vx = verifydata;
-            console.log(vx);
+            
         
                 $.ajax({
                     type:'POST',
                     url:url,
-                    data:{gg:vx},
+                    data:{gg: vx},
                     success:function(response){
                     console.log(response);
-                    if(response.status == 'success'){
+                    if(response){
                         window.location.href= url;
                     }
                 }
