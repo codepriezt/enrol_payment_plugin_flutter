@@ -138,23 +138,25 @@ function payWithRave(e){
             console.log(url);
             var vx = JSON.stringify(verifydata);
             console.log(vx);
-        //     httpc.open("POST" , url , true);
+        
+                $.ajax({
+                    type:'POST',
+                    url:url,
+                    data:{data:vx},
+                    success:function(response){
+                    console.log(response);
+                }
+            
+            });
+        }
+
+
+//     httpc.open("POST" , url , true);
         //     httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         //     httpc.onreadystatechange = function() { 
         //    if(httpc.readyState == 4 && httpc.status == 200) { 
         //     console.log(httpc.status); 
         // }
-                        $.ajax({
-                            type:'POST',
-                            url:url,
-                            data:{data:vx},
-                            success:function(response){
-                            console.log(response);
-                        }
-                    
-                    });
-        }
-
 </script>
 
 
