@@ -114,17 +114,8 @@ function payWithRave(e){
 				var txref = response.tx.txRef; 
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
-
-
                         console.log(data);
-                        console.log(udf1);
 					
-                     var verifydata = {
-                        'data': data,
-                        'ud':udf1
-                    };
-                 
-
                 } else {
                     console.log(data);
                 }
