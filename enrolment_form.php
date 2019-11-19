@@ -143,9 +143,9 @@ function payWithRave(e){
                     type:'POST',
                     url:url,
                     data:{gg: vx},
-                    success:function(response){
-                    console.log(response);
-                    if(response){
+                    success:function(data){
+                    console.log(data);
+                    if(data){
                         window.location.href= url;
                     }
                 }
