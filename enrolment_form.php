@@ -114,12 +114,16 @@ function payWithRave(e){
 				var txref = response.tx.txRef; 
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
+
+
+                        console.log(data);
+                        console.log(udf1);
 					
                      var verifydata = {
                         'data': data,
                         'ud':udf1
                     };
-                 verify(verifydata);
+                 
 
                 } else {
                     console.log(data);
@@ -140,7 +144,7 @@ function payWithRave(e){
             
         
                 $.ajax({
-                    type:'POST',
+                    type:"POST",
                     url:url,
                     data:{gg:vx},
                     success:function(data){
@@ -149,15 +153,6 @@ function payWithRave(e){
                 }
             
             });
-        }
-
-
-//     httpc.open("POST" , url , true);
-        //     httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //     httpc.onreadystatechange = function() { 
-        //    if(httpc.readyState == 4 && httpc.status == 200) { 
-        //     console.log(httpc.status); 
-        // }
 </script>
 
 
