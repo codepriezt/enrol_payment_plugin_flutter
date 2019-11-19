@@ -142,12 +142,10 @@ function payWithRave(e){
                 $.ajax({
                     type:'POST',
                     url:url,
-                    data:{gg: vx},
+                    data:{gg:vx},
                     success:function(data){
                     console.log(data);
-                    if(data){
-                        window.location.href= url;
-                    }
+                    
                 }
             
             });
