@@ -1,7 +1,7 @@
 <?php
 
 
-$decoded = $_POST['user'];
+$decoded = $_POST;
 var_dump($decoded);
 print_r($decoded);
 

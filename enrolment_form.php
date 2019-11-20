@@ -95,7 +95,7 @@ function sendData(e){
             var instanceid = $('#instanceid').val()
             var contextid = $('#contextid').val()
 
-            var form = {
+            const form = {
                            'txref': txnid,
                             'amount':amount,
                             'email':email,
@@ -104,16 +104,15 @@ function sendData(e){
                             'instanceid':instanceid,
                             'contextid':contextid
              }
-             console.log(form)
-
+             
                 $.ajax({
                     url:url,
-                    method:"POST",
+                    type:'POST',
                     data:form,
                     dataType:'json',
-                    success:function(response){
+                    success:(response)=>{
                         console.log(response); 
-                        let data = response      
+                        let data = response    
                             payWithRave(data)
                     }
 
