@@ -126,7 +126,7 @@ function payWithRave(e){
                             'instanceid':instanceid,
                             'contextid':contextid
              }
-                    console.log(form);
+                    verify(form)
                 } else {
                     console.log(data);
                 }
@@ -135,6 +135,23 @@ function payWithRave(e){
             }
         });
     e.preventDefault();
+    }
+
+
+    function verify(form)
+    {
+        var url = $('#surl').val();
+
+        var formStr = JSON.stringify(form);
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:{user:formStr},
+            dataType:'json',
+            success: (response) =>{
+                console.log(response)
+            }
+        })
     }
 		
 </script>
