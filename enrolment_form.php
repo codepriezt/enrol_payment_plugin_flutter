@@ -82,61 +82,29 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 </style>
 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type ="text/javascript">
-const btn = document.querySelector('#sub_button').addEventListener('click' , sendData);
+const btn = document.querySelector('#sub_button').addEventListener('click' , paywithRave);
 
 
-function sendData(e){
+
+
+function payWithRave(e){
+   
+	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
             var email = $('#email').val()
             var  amount = $('#amount').val()
             var  txnid = $('#txnid').val() 
-            const url = "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/record.php";
             var courseid = $('#courseid').val()
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
             var contextid = $('#contextid').val()
-
-            const form = {
-                           'txref': txnid,
-                            'amount':amount,
-                            'email':email,
-                            'courseid':courseid,
-                            'userid':userid,
-                            'instanceid':instanceid,
-                            'contextid':contextid
-             }
-             
-                $.ajax({
-                    url:url,
-                    type:'POST',
-                    data:form,
-                    dataType:'json',
-                    success:(response) => {
-                        console.log(response); 
-                        let data = response    
-                            payWithRave(data)
-                    }
-
-                });
-        e.preventDefault();
-}
-
-function payWithRave(data){
-    console.log(data)
-	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
-    const email = data.email
-    const  amount = data.amount
-    const  txnid = data.txref 
-    const courseid = data.courseid
-    const userid = data.userid
-    const currency = 'NG'?'NGN':'USD'
-    const contextid = data.contextid
+            const currency = 'NG'?'NGN':'USD'
+    
     
 
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
             customer_email: email,
 			amount: amount,
-			customer_phone: phone,
             currency: currency,
             txref: txnid,
             meta: [{
@@ -147,8 +115,18 @@ function payWithRave(data){
 				var txref = response.tx.txRef; 
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
-                        
-                    window.location.href = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
+
+                    
+            const form = {
+                           'txref': txref,
+                            'amount':amount,
+                            'email':email,
+                            'courseid':courseid,
+                            'userid':userid,
+                            'instanceid':instanceid,
+                            'contextid':contextid
+             }
+                    console.log(form);
                 } else {
                     console.log(data);
                 }
