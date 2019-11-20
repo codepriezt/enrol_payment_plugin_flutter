@@ -114,10 +114,12 @@ function sendData(e){
                     
                     success:function(response){
                        console.log(response);
+                    }
 
                 });
         e.preventDefault();
 }
+
 function payWithRave(){
 
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
