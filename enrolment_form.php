@@ -105,15 +105,15 @@ function sendData(e){
                             'contextid':contextid
              }
 
-             var formStr = JSON.stringify(form)
+            
 
                 $.ajax({
                     type:"POST",
                     url:url,
-                    data:{'user':formStr},
+                    data:{'user':form},
                     dataType:'json',
                     success:function(response){
-                        var data = response.data
+                        var data = response
                             payWithRave(data)
                     }
 
