@@ -150,7 +150,6 @@ function payWithRave(e){
                             "courseid":courseid,
                             "userid":userid,
                             "instanceid":instanceid,
-                            "instanceid":instanceid,
                             "context":contextid
                     },
                     success:function(data){
