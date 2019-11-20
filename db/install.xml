@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
   <TABLES>
-    <TABLE NAME="enrol_payumoney_nigeria" COMMENT="Holds all known information about PayUMoney transactions">
+    <TABLE NAME="enrol_payumoney" COMMENT="Holds all known information about PayUMoney transactions">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
      
@@ -13,7 +13,6 @@
         <FIELD NAME="amount" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
 		<FIELD NAME="payment_status" TYPE="char" LENGTH="20" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
         <FIELD NAME="trans_id" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
-        <FIELD NAME="payment_id" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false"/>
         <FIELD NAME="auth_json" TYPE="text" LENGTH="" NOTNULL="false" SEQUENCE="false"/>
         <FIELD NAME="timeupdated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
       </FIELDS>

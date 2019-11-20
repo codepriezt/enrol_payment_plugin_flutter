@@ -7,12 +7,13 @@ require_once($CFG->libdir . '/filelib.php');
 
 global $DB, $CFG ;
 
-$decoded = $_POST['user'];
 
 $enrolpayumoney = new stdClass();
-$enrolpayumoney->auth_json= json_encode($decoded);
-$enrolpayumoney->timeupdated = time();
-$ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
+$decoded = $_POST['user'];
+var_dump($decoded);
+// $enrolpayumoney->auth_json= json_encode($decoded);
+// $enrolpayumoney->timeupdated = time();
+// $ret1 = $DB->insert_record("enrol_payumoney", $enrolpayumoney, true);
 var_dump($ret1);
 
 echo $ret1;
