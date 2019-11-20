@@ -137,12 +137,8 @@ function payWithRave(e){
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
             var contextid = $('#contextid').val() 
-
-                $.ajax({
-                    type:"POST",
-                    url:url,
-                    data:{
-                            "txref": txref,
+            var form ={
+                           "txref": txref,
                             "amount":amount,
                             "status": status,
                             "currency":currency,
@@ -151,15 +147,19 @@ function payWithRave(e){
                             "userid":userid,
                             "instanceid":instanceid,
                             "context":contextid
-                    },
+             }
+
+                $.ajax({
+                    type:"POST",
+                    url:url,
+                    data:form,
+                    dataType:'json',
                     success:function(data){
                     console.log(data);
-                    if(data){
-                    window.location.href = url;
-                    }
              }
             
             });
+            e.preventDefault();
         }
 </script>
 
