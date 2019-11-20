@@ -137,25 +137,27 @@ function payWithRave(e){
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
             var contextid = $('#contextid').val() 
-            var form ={
+            var form = {
                            "txref": txref,
-                            "amount":amount,
-                            "status": status,
-                            "currency":currency,
-                            "email":email,
-                            "courseid":courseid,
-                            "userid":userid,
-                            "instanceid":instanceid,
-                            "context":contextid
+                            'amount':amount,
+                            'status': status,
+                            'currency':currency,
+                            'email':email,
+                            'courseid':courseid,
+                            'userid':userid,
+                            'instanceid':instanceid,
+                            'context':contextid
              }
+             console.log(form)
+             var formStr = JSON.stringify(form)
 
                 $.ajax({
                     type:"POST",
                     url:url,
-                    data:form,
-                    dataType:'json',
-                    success:function(data){
-                    console.log(data);
+                    data:{user:formStr},
+                    
+                    success:function(response){
+                    console.log(response);
              }
             
             });
