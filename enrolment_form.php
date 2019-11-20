@@ -102,10 +102,10 @@ function sendData(e){
                             'courseid':courseid,
                             'userid':userid,
                             'instanceid':instanceid,
-                            'context':contextid
+                            'contextid':contextid
              }
 
-            
+             var formStr = JSON.stringify(form)
 
                 $.ajax({
                     type:"POST",
@@ -123,13 +123,13 @@ function sendData(e){
 function payWithRave(data){
 
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
-    var email = data.user.email
-    var  amount = data.user.amount
-    var  txnid = data.user.txref 
+    const email = data.user.email
+    const  amount = data.user.amount
+    const  txnid = data.user.txref 
     const courseid = data.user.courseid
     const userid = data.user.userid
     const currency = 'NG'?'NGN':'USD'
-    const contextid = data.user.context
+    const contextid = data.user.contextid
     
 
   var x = getpaidSetup({
@@ -159,22 +159,6 @@ function payWithRave(data){
     e.preventDefault();
     }
 		
-        function verify(data)
-        {   
-            var txref = data.tx.txRef
-            var amount = data.tx.amount
-            var status = data.tx.status
-            var currency = data.tx.currency
-            var email = data.tx.customer.email  
-            var url = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
-            var courseid = $('#courseid').val()
-            var userid =$('#userid').val()
-            var instanceid = $('#instanceid').val()
-            var contextid = $('#contextid').val() 
-           
-             console.log(form)
-           
-        }
 </script>
 
 
