@@ -148,8 +148,8 @@ function payWithRave(e){
             url:url,
             type:'POST',
             data:{user:formStr},
-            success: function(data){
-                console.log(data)
+            success: function(response){
+                console.log(response)
             }
         })
     }

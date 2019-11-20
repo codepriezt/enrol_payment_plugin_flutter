@@ -11,12 +11,7 @@ global $DB, $CFG ;
 
 $decoded = $_POST['user'];
 var_dump($decoded);
-// // $enrolpayumoney->auth_json= json_encode($decoded);
-// // $enrolpayumoney->timeupdated = time();
-// // $ret1 = $DB->insert_record("enrol_payumoney", $enrolpayumoney, true);
-// var_dump($ret1);
-
-// echo $ret1;
 
 
+die;
 ?>
