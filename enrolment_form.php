@@ -110,9 +110,10 @@ function sendData(e){
                 $.ajax({
                     type:"POST",
                     url:url,
-                    data:{user:formStr},
+                    data:{'user':formStr},
+                    dataType:'json',
                     success:function(response){
-                        var data = response
+                        var data = response.data
                             payWithRave(data)
                     }
 
@@ -123,13 +124,13 @@ function sendData(e){
 function payWithRave(data){
     console.log(data)
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
-    const email = data.user.email
-    const  amount = data.user.amount
-    const  txnid = data.user.txref 
-    const courseid = data.user.courseid
-    const userid = data.user.userid
+    const email = data.email
+    const  amount = data.amount
+    const  txnid = data.txref 
+    const courseid = data.courseid
+    const userid = data.userid
     const currency = 'NG'?'NGN':'USD'
-    const contextid = data.user.contextid
+    const contextid = data.contextid
     
 
   var x = getpaidSetup({
