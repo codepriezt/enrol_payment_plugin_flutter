@@ -121,7 +121,7 @@ function sendData(e){
 }
 
 function payWithRave(data){
-
+    console.log(data)
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
     const email = data.user.email
     const  amount = data.user.amount
