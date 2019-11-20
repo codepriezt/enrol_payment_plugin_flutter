@@ -1,8 +1,7 @@
 <?php
 
-$user = $_GEt['response'];
-$decoded = json_decode($user , true);
 
+$decoded = json_encode($_POST);
 var_dump($decoded);
 
 

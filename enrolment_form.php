@@ -62,6 +62,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
         <input type="hidden"  id="courseid" name="courseid" value="<?php echo $instance->courseid; ?>" />
         <input type="hidden"  id="instanceid" name="instanceid" value="<?php echo $instance->id; ?>" />
         <input type="hidden"  id="contextid" name="contextid" value="<?php echo $context->id; ?>" />
+        <input type="hidden" id = "surl" name="surl" value="<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php"; />
         <input type="hidden"  id="userid" name="userid" value="<?php echo $USER->id; ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>
@@ -114,7 +115,7 @@ function payWithRave(e){
 				var data = response
                 if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
                         
-                        verify(data);
+                    window.location.href = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
                 } else {
                     console.log(data);
                 }
@@ -157,7 +158,7 @@ function payWithRave(e){
                     data:{user:formStr},
                     
                     success:function(response){
-                    window.location.href= url+response ;
+                        console.log(response);
              }
             
             });
