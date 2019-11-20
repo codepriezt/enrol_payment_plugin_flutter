@@ -133,26 +133,32 @@ function payWithRave(e){
             var currency = data.tx.currency
             var email = data.tx.customer.email  
             var url = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
-            var  udf1 = $('#udf1').val()
             var courseid = $('#courseid').val()
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
-            var contextid = $('contextid').val() 
+            var contextid = $('#contextid').val() 
 
-            console.log(url , txref , amount , status , email ,  currency , courseid , userid , instanceid , contextid);
-            
-            
-        
                 $.ajax({
                     type:"POST",
                     url:url,
                     data:{
-
+                            "txref": txref,
+                            "amount":amount,
+                            "status": status,
+                            "currency":currency,
+                            "email":email,
+                            "courseid":courseid
+                            "userid":userid,
+                            "instanceid":instanceid,
+                            "instanceid":instanceid,
+                            "context":contextid
                     },
                     success:function(data){
                     console.log(data);
-                    
-                }
+                    if(data){
+                    window.location.href = url;
+                    }
+             }
             
             });
         }
