@@ -41,7 +41,7 @@ if (empty($_POST) or !empty($_GET)) {
     print_error("Sorry, you can not use the script that way."); die;
 }
 
-;
+
 
 $enrolpayumoney = new stdClass();
 $record = $_POST['user'];
@@ -51,7 +51,8 @@ $enrolpayumoney->timeupdated = time();
 
 
 $ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
-var_dump($ret1 , $enrolpayumoney);
+var_dump($ret1);
+return($ret1);
 
 die;
 

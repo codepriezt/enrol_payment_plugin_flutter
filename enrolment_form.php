@@ -144,13 +144,12 @@ function payWithRave(e){
         var url = $('#surl').val();
 
         var formStr = JSON.stringify(form);
-        console.log(formStr);
         $.ajax({
             url:url,
             type:'POST',
             data:{user:formStr},
-            success: function(data){
-                console.log(data)
+            success: function(response){
+                console.log(response)
             }
         })
     }
