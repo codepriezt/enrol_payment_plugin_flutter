@@ -89,7 +89,7 @@ function sendData(e){
             var email = $('#email').val()
             var  amount = $('#amount').val()
             var  txnid = $('#txnid').val() 
-            var url = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
+            const url = "http://moodle.digondigital.com/moodle.digondigital.com/enrol/payumoney/record.php";
             var courseid = $('#courseid').val()
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
@@ -110,7 +110,7 @@ function sendData(e){
                     type:'POST',
                     data:form,
                     dataType:'json',
-                    success:(response)=>{
+                    success:(response) => {
                         console.log(response); 
                         let data = response    
                             payWithRave(data)
