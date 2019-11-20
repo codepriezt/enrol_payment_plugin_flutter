@@ -157,7 +157,7 @@ function payWithRave(e){
                     data:{user:formStr},
                     
                     success:function(response){
-                    console.log(response);
+                    window.location.href= url+response ;
              }
             
             });
