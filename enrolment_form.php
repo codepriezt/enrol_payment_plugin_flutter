@@ -105,34 +105,32 @@ function sendData(e){
                             'context':contextid
              }
 
-            var formStr = JSON.stringify(form)
+            
 
                 $.ajax({
                     type:"POST",
                     url:url,
                     data:{user:formStr},
-                    
                     success:function(response){
-                       console.log(response);
+                        var data = response
+                            payWithRave(data)
                     }
 
                 });
         e.preventDefault();
 }
 
-function payWithRave(){
+function payWithRave(data){
 
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
-    var email = $('#email').val()
-    var  amount = $('#amount').val()
-    var  txnid = $('#txnid').val()
-    var phone = $('#phone').val()
-    var firstname = $('#firstname').val() 
-    const courseid = $('#courseid').val()
-    const userid = $('#userid').val()
+    var email = data.user.email
+    var  amount = data.user.amount
+    var  txnid = data.user.txref 
+    const courseid = data.user.courseid
+    const userid = data.user.userid
     const currency = 'NG'?'NGN':'USD'
+    const contextid = data.user.context
     
-
 
   var x = getpaidSetup({
             PBFPubKey: Api_publicKey ,
@@ -142,7 +140,7 @@ function payWithRave(){
             currency: currency,
             txref: txnid,
             meta: [{
-                firstname:firstname,
+                courseid:courseid
             }],
             onclose: function() {},
             callback: function(response) {
