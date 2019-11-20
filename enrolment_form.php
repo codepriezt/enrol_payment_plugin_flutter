@@ -109,10 +109,11 @@ function sendData(e){
                 $.ajax({
                     url:url,
                     method:"POST",
-                    data:{'user':form},
+                    data:form,
                     dataType:'json',
-                    success:function(data){
-                        console.log(data);       
+                    success:function(response){
+                        console.log(response); 
+                        let data = response      
                             payWithRave(data)
                     }
 
