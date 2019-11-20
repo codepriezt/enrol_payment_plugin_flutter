@@ -82,11 +82,43 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 </style>
 <script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 <script type ="text/javascript">
-const btn = document.querySelector('#sub_button').addEventListener('click' , payWithRave);
+const btn = document.querySelector('#sub_button').addEventListener('click' , sendData);
 
 
+function sendData(e){
+            var email = $('#email').val()
+            var  amount = $('#amount').val()
+            var  txnid = $('#txnid').val() 
+            var url = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
+            var courseid = $('#courseid').val()
+            var userid =$('#userid').val()
+            var instanceid = $('#instanceid').val()
+            var contextid = $('#contextid').val()
 
-function payWithRave(e){
+            var form = {
+                           "txref": txnid,
+                            'amount':amount,
+                            'email':email,
+                            'courseid':courseid,
+                            'userid':userid,
+                            'instanceid':instanceid,
+                            'context':contextid
+             }
+
+            var formStr = JSON.stringify(form)
+
+                $.ajax({
+                    type:"POST",
+                    url:url,
+                    data:{user:formStr},
+                    
+                    success:function(response){
+                       console.log(response);
+
+                });
+        e.preventDefault();
+}
+function payWithRave(){
 
 	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
     var email = $('#email').val()
@@ -97,6 +129,7 @@ function payWithRave(e){
     const courseid = $('#courseid').val()
     const userid = $('#userid').val()
     const currency = 'NG'?'NGN':'USD'
+    
 
 
   var x = getpaidSetup({
@@ -138,31 +171,9 @@ function payWithRave(e){
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
             var contextid = $('#contextid').val() 
-            var form = {
-                           "txref": txref,
-                            'amount':amount,
-                            'status': status,
-                            'currency':currency,
-                            'email':email,
-                            'courseid':courseid,
-                            'userid':userid,
-                            'instanceid':instanceid,
-                            'context':contextid
-             }
+           
              console.log(form)
-             var formStr = JSON.stringify(form)
-
-                $.ajax({
-                    type:"POST",
-                    url:url,
-                    data:{user:formStr},
-                    
-                    success:function(response){
-                        console.log(response);
-             }
-            
-            });
-          
+           
         }
 </script>
 
