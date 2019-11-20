@@ -159,7 +159,7 @@ function payWithRave(e){
              }
             
             });
-            e.preventDefault();
+          
         }
 </script>
 
