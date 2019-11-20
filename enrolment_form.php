@@ -96,7 +96,7 @@ function sendData(e){
             var contextid = $('#contextid').val()
 
             var form = {
-                           "txref": txnid,
+                           'txref': txnid,
                             'amount':amount,
                             'email':email,
                             'courseid':courseid,
@@ -104,8 +104,7 @@ function sendData(e){
                             'instanceid':instanceid,
                             'contextid':contextid
              }
-
-            
+             console.log(form)
 
                 $.ajax({
                     url:url,
