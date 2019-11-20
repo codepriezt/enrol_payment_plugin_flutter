@@ -147,9 +147,8 @@ function payWithRave(e){
             url:url,
             type:'POST',
             data:{user:formStr},
-            dataType:'json',
-            success: (response) =>{
-                console.log(response)
+            success: function(data){
+                console.log(data)
             }
         })
     }
