@@ -134,13 +134,12 @@ function payWithRave(e){
             var email = data.tx.customer.email  
             var url = "<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php";
             var  udf1 = $('#udf1').val()
-            var ud = udf1.split(',');
             var courseid = $('#courseid').val()
             var userid =$('#userid').val()
             var instanceid = $('#instanceid').val()
             var contextid = $('contextid').val() 
 
-            console.log(url , txref , amount , status , email ,  , currency , courseid , userid , instanceid , contextid);
+            console.log(url , txref , amount , status , email ,  currency , courseid , userid , instanceid , contextid);
             
             
         
