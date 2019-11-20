@@ -147,7 +147,7 @@ function payWithRave(e){
                             "status": status,
                             "currency":currency,
                             "email":email,
-                            "courseid":courseid
+                            "courseid":courseid,
                             "userid":userid,
                             "instanceid":instanceid,
                             "instanceid":instanceid,
