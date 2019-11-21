@@ -19,11 +19,14 @@ $enrolpayumoney->timeupdated = time();
 
 $ret1 = $DB->insert_record("enrol_flutter", $enrolpayumoney, true);
 
-print_r($ret1);
 
 
+echo '<script type="text/javascript">
+     window.location.href="'.$CFG->wwwroot.'/enrol/flutter/update.php?id='.$ret1.'";
+     </script>';
 
-print_r($enrolpayumoney);
+die;
+
 
 
 

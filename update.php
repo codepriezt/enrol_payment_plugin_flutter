@@ -31,7 +31,6 @@
 
 require("../../config.php");
 require_once("lib.php");
-require_once($CFG->libdir.'/eventslib.php');
 require_once($CFG->libdir.'/enrollib.php');
 require_once($CFG->libdir . '/filelphp');
 
@@ -42,31 +41,19 @@ print_r($id);
 
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
-$responsearray = json_decode($response->auth_json, true);
 
+$responsearray = json_decode($response->auth_json, true);
+print_r($responsearray);
 
 $txnid = $responsearray['txref'];
 $amount = $responsearray['amount'];
-$useremail = $responsearray['email'];
-$userfirstname = $responsearray['courseid'];
-$productinfo = $responsearray['userid'];
+$email = $responsearray['email'];
+$courseid = $responsearray['courseid'];
+$userid = $responsearray['userid'];
 $status = $responsearray['status'];
-$udf1 = $responsearray['contextid'];
-$instanceid = $responsearray['contextid'];
+$contextid= $responsearray['contextid'];
+$instanceid = $responsearray['instanceid'];
 
-
-// $str = $status . "|||||||||" . $udf2. "|" . $udf1 . "|" . $useremail . "|" . $userfirstname . "|" . $productinfo . "|" . $amount . "|" . $txnid . "|" ;
-
-
-
-// if ($generatedhash != $responsearray['hash']) {
-//     print_error("We can't validate your transaction. Please try again!!"); die;
-// }
-
-$arraycourseinstance = explode('-', $responsearray['ud']);
-if (empty($arraycourseinstance) || count($arraycourseinstance) < 4) {
-    print_error("Received an invalid payment notification!! (Fake payment?)"); die;
-}
 
 if (! $user = $DB->get_record("user", array("id" => $userid))) {
     print_error("Not a valid user id"); die;
@@ -85,19 +72,19 @@ if (! $plugininstance = $DB->get_record("enrol", array("id" => $instanceid, "sta
 }
 
 
-$enrolpayumoney = $userenrolments = $roleassignments = new stdClass();
+$enrolflutter = $userenrolments = $roleassignments = new stdClass();
 
-$enrolpayumoney->id = $id;
-$enrolpayumoney->courseid = $courseid;
-$enrolpayumoney->userid = $userid;
-$enrolpayumoney->instanceid = $instanceid;
-$enrolpayumoney->amount = $amount;
+$enrolflutter->id = $id;
+$enrolflutter->courseid = $courseid;
+$enrolflutter->userid = $userid;
+$enrolflutter->instanceid = $instanceid;
+$enrolflutter->amount = $amount;
 //$enrolpayumoney->tax = $responsearray['tax'];
 
 
 
-if ($responsearray['status'] == "successful") {
-    $enrolpayumoney->status = 'Approved';
+if ($status == "successful") {
+    $enrolflutter->status = 'Approved';
     
     $PAGE->set_context($context);
     $coursecontext = context_course::instance($course->id, IGNORE_MISSING);
@@ -184,28 +171,28 @@ if ($responsearray['status'] == "failure") {
 }
 
 
-$enrolpayumoney->trans_id = $responsearray['txnid'];
-$enrolpayumoney->payment_id = $responsearray['payuMoneyId'];
-$enrolpayumoney->timeupdated = time();
-/* Inserting value to enrol_payumoney table */
-$ret1 = $DB->update_record("enrol_payumoney", $enrolpayumoney, false);
+$enrolflutter->txnid = $responsearray['txref'];
 
-if ($responsearray['status'] == "success") {
+$enrolflutter->timeupdated = time();
+/* Inserting value to enrol_payumoney table */
+$ret1 = $DB->update_record("enrol_flutter", $enrolflutter, false);
+
+if ($responsearray['status'] == "successful") {
     /* Inserting value to user_enrolments table */
 
     $userenrolments->status = 0;
-    $userenrolments->enrolid = $arraycourseinstance[2];
-    $userenrolments->userid = $arraycourseinstance[1];
+    $userenrolments->enrolid = $instanceid;
+    $userenrolments->userid = $userid;
     $userenrolments->timestart = time();
-    $userenrolments->timeend = time() + $udf2;
+    $userenrolments->timeend = time();
     $userenrolments->modifierid = 2;
     $userenrolments->timecreated = time();
     $userenrolments->timemodified = time();
     $ret2 = $DB->insert_record("user_enrolments", $userenrolments, false);
     /* Inserting value to role_assignments table */
     $roleassignments->roleid = 5;
-    $roleassignments->contextid = $arraycourseinstance[3];
-    $roleassignments->userid = $arraycourseinstance[1];
+    $roleassignments->contextid = $contextid;
+    $roleassignments->userid = $userid;
     $roleassignments->timemodified = time();
     $roleassignments->modifierid = 2;
     $roleassignments->component = '';
