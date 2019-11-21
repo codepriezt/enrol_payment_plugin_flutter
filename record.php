@@ -19,7 +19,7 @@ $enrolpayumoney->auth_json = json_encode($decoded);
 $enrolpayumoney->timeupdated = time();
 
 
-$ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
+$ret1 = $DB->insert_record("enrol_payumoney", $enrolpayumoney, true);
 
 var_dump($ret1);
 
