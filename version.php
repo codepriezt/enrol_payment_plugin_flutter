@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2019102001;
-$plugin->requires  = 2014051200;
+$plugin->version   = 2015061501;
+$plugin->requires  = 2013051401;
 $plugin->component = 'enrol_flutter';
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = '1.0 (Build: 20170910)';
