@@ -143,15 +143,12 @@ function payWithRave(e){
     {
         var url = $('#surl').val();
 
-        var formStr = JSON.stringify(form);
-        $.ajax({
-            url:url,
-            type:'POST',
-            data:{user:formStr},
-            success: function(data){
-                console.log(data)
-            }
-        })
+        var httpc = new XMLHttpRequest();
+
+        httpc.open('POST' , url , true)
+        httpc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        httpc.send(form);
+             
     }
 		
 </script>
