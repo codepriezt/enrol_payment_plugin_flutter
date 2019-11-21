@@ -21,7 +21,9 @@ $ret1 = $DB->insert_record("enrol_flutter", $enrolpayumoney, true);
 
 print_r($ret1);
 
-var_dump($ret1)
+
+
+print_r($enrolpayumoney);
 
 
 
