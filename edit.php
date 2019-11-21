@@ -58,7 +58,7 @@ if ($instanceid) {
     $instance->courseid = $course->id;
 }
 
-$mform = new enrol_payumoney_edit_form(null, array($instance, $plugin, $context));
+$mform = new enrol_flutter_edit_form(null, array($instance, $plugin, $context));
 
 if ($mform->is_cancelled()) {
     redirect($return);

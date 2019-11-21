@@ -232,7 +232,7 @@ class enrol_flutter_plugin extends enrol_plugin {
                 $usercity        = $USER->city;
                 $instancename    = $this->get_instance_name($instance);
 
-                include($CFG->dirroot.'/enrolflutter/enrolment_form.php');
+                include($CFG->dirroot.'/enrol/flutter/enrolment_form.php');
             }
 
         }
