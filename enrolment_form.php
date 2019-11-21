@@ -50,7 +50,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 <p><b><?php echo $instancename; ?></b></p>
 <p><b><?php echo get_string("cost").": {$instance->currency} {$localisedcost}"; ?></b></p>
 <p>&nbsp;</p>
-<p><img alt="PayUMoney" src="<?php echo $CFG->wwwroot; ?>/enrol/payumoney/pix/payumoneynigeria.jpeg" /></p>
+<p><img alt="PayUMoney" src="<?php echo $CFG->wwwroot; ?>/enrol/flutter/pix/index.png" /></p>
 <p>&nbsp;</p>
 <p>
 	<form>
@@ -62,7 +62,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
         <input type="hidden"  id="courseid" name="courseid" value="<?php echo $instance->courseid; ?>" />
         <input type="hidden"  id="instanceid" name="instanceid" value="<?php echo $instance->id; ?>" />
         <input type="hidden"  id="contextid" name="contextid" value="<?php echo $context->id; ?>" />
-        <input type="hidden" id = "surl" name="surl" value="<?php echo $CFG->wwwroot ?>/enrol/payumoney/record.php"; />
+        <input type="hidden" id = "surl" name="surl" value="<?php echo $CFG->wwwroot ?>/enrol/flutter/record.php"; />
         <input type="hidden"  id="userid" name="userid" value="<?php echo $USER->id; ?>" />
 		<button type="button" id="sub_button" value="">Pay Now</button>
 	</form>

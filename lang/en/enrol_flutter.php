@@ -15,26 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'enrol_payumoneydotcom', language 'en'.
+ * Strings for component 'enrol_flutterdotcom', language 'en'.
  *
- * @package    enrol_payumoneydotcom
+ * @package    enrol_flutterdotcom
  * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'PayUMoney';
-$string['pluginname_desc'] = 'The PayUMoney module allows you to set up paid courses.  If the cost for any course is zero, then students are not asked to pay for entry.  There is a site-wide cost that you set here as a default for the whole site and then a course setting that you can set for each course individually. The course cost overrides the site cost.';
-$string['Api']='PAYUMoney api current version';
-$string['publicKey'] = 'PayUMoney merchant username';
-$string['secretKey'] = 'PayUMoney merchant password';
-$string['merchantReference']='unique merchant identifier for transaction';
-$string['supportedPaymentMethods']='list of card payment';
-$string['secure3d']='this will determine if the transaction went through';
-$string['demoMode']='to determine if the Api request should be handled as a demo teansaction';
-$string['NotificationUrl']='Url that will determine if the  mercahnt will be notified of transactio result';
-$string['returnUrl']='Url return to browser or after a customer has comleted transaction';
-$string['cancelUrl']='cancel url to cancel a transaction ';
-$string['checkproductionmode'] = 'Check for production mode';
+$string['pluginname'] = 'Flutter';
+$string['pluginname_desc'] = 'The Flutter module allows you to set up paid courses.  If the cost for any course is zero, then students are not asked to pay for entry.  There is a site-wide cost that you set here as a default for the whole site and then a course setting that you can set for each course individually. The course cost overrides the site cost.';
 $string['mailadmins'] = 'Notify admin';
 $string['mailstudents'] = 'Notify students';
 $string['mailteachers'] = 'Notify teachers';
@@ -57,10 +46,10 @@ $string['enrolstartdate'] = 'Start date';
 $string['enrolstartdate_help'] = 'If enabled, users can be enrolled from this date onward only.';
 $string['expiredaction'] = 'Enrolment expiration action';
 $string['expiredaction_help'] = 'Select action to carry out when user enrolment expires. Please note that some user data and settings are purged from course during course unenrolment.';
-$string['payumoney:config'] = 'Configure PayUMoney enrol instances';
-$string['payumoney:manage'] = 'Manage enrolled users';
-$string['payumoney:unenrol'] = 'Unenrol users from course';
-$string['payumoney:unenrolself'] = 'Unenrol self from the course';
-$string['status'] = 'Allow PayUMoney enrolments';
+$string['flutter:config'] = 'Configure PayUMoney enrol instances';
+$string['flutter:manage'] = 'Manage enrolled users';
+$string['flutter:unenrol'] = 'Unenrol users from course';
+$string['flutter:unenrolself'] = 'Unenrol self from the course';
+$string['status'] = 'Allow Flutter enrolments';
 $string['status_desc'] = 'Allow users to use PayUMoney to enrol into a course by default.';
 $string['unenrolselfconfirm'] = 'Do you really want to unenrol yourself from course "{$a}"?';

@@ -32,21 +32,21 @@ $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 $context = context_course::instance($course->id, MUST_EXIST);
 
 require_login($course);
-require_capability('enrol/payumoney:config', $context);
+require_capability('enrol/flutter:config', $context);
 
-$PAGE->set_url('/enrol/payumoney/edit.php', array('courseid' => $course->id, 'id' => $instanceid));
+$PAGE->set_url('/enrol/flutter/edit.php', array('courseid' => $course->id, 'id' => $instanceid));
 $PAGE->set_pagelayout('admin');
 
 $return = new moodle_url('/enrol/instances.php', array('id' => $course->id));
-if (!enrol_is_enabled('payumoney')) {
+if (!enrol_is_enabled('flutter')) {
     redirect($return);
 }
 
-$plugin = enrol_get_plugin('payumoney');
+$plugin = enrol_get_plugin('flutter');
 
 if ($instanceid) {
     $instance = $DB->get_record('enrol',
-    array('courseid' => $course->id, 'enrol' => 'payumoney', 'id' => $instanceid),
+    array('courseid' => $course->id, 'enrol' => 'flutter', 'id' => $instanceid),
     '*', MUST_EXIST);
     $instance->cost = format_float($instance->cost, 2, true);
 } else {
@@ -99,9 +99,9 @@ if ($mform->is_cancelled()) {
 }
 
 $PAGE->set_heading($course->fullname);
-$PAGE->set_title(get_string('pluginname', 'enrol_payumoney'));
+$PAGE->set_title(get_string('pluginname', 'enrol_flutter'));
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('pluginname', 'enrol_payumoney'));
+echo $OUTPUT->heading(get_string('pluginname', 'enrol_flutter'));
 $mform->display();
 echo $OUTPUT->footer();

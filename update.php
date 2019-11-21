@@ -40,18 +40,19 @@ global $DB, $CFG , $data;
 $id = required_param('id', PARAM_INT);
 print_r($id);
 
-$response = $DB->get_record('enrol_payumoney_nigeria', array('id' => $id));
+$response = $DB->get_record('enrol_flutter', array('id' => $id));
 
 $responsearray = json_decode($response->auth_json, true);
 
 
-$txnid = $responsearray['txnid'];
+$txnid = $responsearray['txref'];
 $amount = $responsearray['amount'];
 $useremail = $responsearray['email'];
-$userfirstname = $responsearray['firstname'];
-$productinfo = $responsearray['productinfo'];
+$userfirstname = $responsearray['courseid'];
+$productinfo = $responsearray['userid'];
 $status = $responsearray['status'];
-$udf1 = $responsearray['ud'];
+$udf1 = $responsearray['contextid'];
+$instanceid = $responsearray['contextid'];
 
 
 // $str = $status . "|||||||||" . $udf2. "|" . $udf1 . "|" . $useremail . "|" . $userfirstname . "|" . $productinfo . "|" . $amount . "|" . $txnid . "|" ;
@@ -67,19 +68,19 @@ if (empty($arraycourseinstance) || count($arraycourseinstance) < 4) {
     print_error("Received an invalid payment notification!! (Fake payment?)"); die;
 }
 
-if (! $user = $DB->get_record("user", array("id" => $arraycourseinstance[1]))) {
+if (! $user = $DB->get_record("user", array("id" => $userid))) {
     print_error("Not a valid user id"); die;
 }
 
-if (! $course = $DB->get_record("course", array("id" => $arraycourseinstance[0]))) {
+if (! $course = $DB->get_record("course", array("id"=> $contextid))) {
     print_error("Not a valid course id"); die;
 }
 
-if (! $context = context_course::instance($arraycourseinstance[0], IGNORE_MISSING)) {
+if (! $context = context_course::instance($contextid, IGNORE_MISSING)) {
     print_error("Not a valid context id"); die;
 }
 
-if (! $plugininstance = $DB->get_record("enrol", array("id" => $arraycourseinstance[2], "status" => 0))) {
+if (! $plugininstance = $DB->get_record("enrol", array("id" => $instanceid, "status" => 0))) {
     print_error("Not a valid instance id"); die;
 }
 
@@ -87,16 +88,16 @@ if (! $plugininstance = $DB->get_record("enrol", array("id" => $arraycourseinsta
 $enrolpayumoney = $userenrolments = $roleassignments = new stdClass();
 
 $enrolpayumoney->id = $id;
-$enrolpayumoney->courseid = $arraycourseinstance[0];
-$enrolpayumoney->userid = $arraycourseinstance[1];
-$enrolpayumoney->instanceid = $arraycourseinstance[2];
-$enrolpayumoney->amount = $responsearray['amount'];
+$enrolpayumoney->courseid = $courseid;
+$enrolpayumoney->userid = $userid;
+$enrolpayumoney->instanceid = $instanceid;
+$enrolpayumoney->amount = $amount;
 //$enrolpayumoney->tax = $responsearray['tax'];
 
 
 
-if ($responsearray['status'] == "success") {
-    $enrolpayumoney->payment_status = 'Approved';
+if ($responsearray['status'] == "successful") {
+    $enrolpayumoney->status = 'Approved';
     
     $PAGE->set_context($context);
     $coursecontext = context_course::instance($course->id, IGNORE_MISSING);
@@ -109,12 +110,10 @@ if ($responsearray['status'] == "success") {
         $teacher = false;
     }
 
-    $plugin = enrol_get_plugin('payumoney');
+    $plugin = enrol_get_plugin('flutter');
 
-    $mailstudents = $plugin->get_config('mailstudents');
-    $mailteachers = $plugin->get_config('mailteachers');
-    $mailadmins   = $plugin->get_config('mailadmins');
-    $shortname = format_string($course->shortname, true, array('context' => $context));
+   
+  
 
     if (!empty($mailstudents)) {
         $a = new stdClass();
@@ -124,8 +123,8 @@ if ($responsearray['status'] == "success") {
         $eventdata = new \core\message\message();
         $eventdata->courseid          = $course->id;
         $eventdata->modulename        = 'moodle';
-        $eventdata->component         = 'enrol_payumoney';
-        $eventdata->name              = 'payumoney_enrolment';
+        $eventdata->component         = 'enrol_flutter';
+        $eventdata->name              = 'flutter_enrolment';
         $eventdata->userfrom          = empty($teacher) ? core_user::get_noreply_user() : $teacher;
         $eventdata->userto            = $user;
         $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
@@ -217,6 +216,6 @@ if ($responsearray['status'] == "success") {
 
 
 echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/return.php?id='.$arraycourseinstance[0].'";
+     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/return.php?id='.$courseid.'";
      </script>';
 die;

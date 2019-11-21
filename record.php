@@ -17,7 +17,7 @@ $enrolpayumoney->auth_json = json_encode($decoded);
 $enrolpayumoney->timeupdated = time();
 
 
-$ret1 = $DB->insert_record("enrol_payumoney", $enrolpayumoney, true);
+$ret1 = $DB->insert_record("enrol_flutter", $enrolpayumoney, true);
 
 print_r($ret1);
 

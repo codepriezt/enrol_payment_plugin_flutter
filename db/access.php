@@ -26,14 +26,14 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
 
-    'enrol/payumoney:config' => array(
+    'enrol/flutter:config' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
             'manager' => CAP_ALLOW,
         )
     ),
-    'enrol/payumoney:manage' => array(
+    'enrol/flutter:manage' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
@@ -41,14 +41,14 @@ $capabilities = array(
             'editingteacher' => CAP_ALLOW,
         )
     ),
-    'enrol/payumoney:unenrol' => array(
+    'enrol/flutter:unenrol' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
             'manager' => CAP_ALLOW,
         )
     ),
-    'enrol/payumoney:unenrolself' => array(
+    'enrol/flutter:unenrolself' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(

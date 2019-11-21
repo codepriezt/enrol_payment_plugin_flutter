@@ -55,7 +55,7 @@ class enrol_payumoney_plugin extends enrol_plugin {
      * @return array of pix_icon
      */
     public function get_info_icons(array $instances) {
-        return array(new pix_icon('icon', get_string('pluginname', 'enrol_payumoney'), 'enrol_payumoney'));
+        return array(new pix_icon('icon', get_string('pluginname', 'enrol_flutter'), 'enrol_flutter'));
     }
     /**
      * Lists all protected user roles.
@@ -101,13 +101,13 @@ class enrol_payumoney_plugin extends enrol_plugin {
      * @return void
      */
     public function add_course_navigation($instancesnode, stdClass $instance) {
-        if ($instance->enrol !== 'payumoney') {
+        if ($instance->enrol !== 'flutter') {
              throw new coding_exception('Invalid enrol instance type!');
         }
 
         $context = context_course::instance($instance->courseid);
-        if (has_capability('enrol/payumoney:config', $context)) {
-            $managelink = new moodle_url('/enrol/payumoney/edit.php',
+        if (has_capability('enrol/flutter:config', $context)) {
+            $managelink = new moodle_url('/enrol/flutter/edit.php',
                                          array('courseid' => $instance->courseid, 'id' => $instance->id));
             $instancesnode->add($this->get_instance_name($instance), $managelink, navigation_node::TYPE_SETTING);
         }
@@ -121,15 +121,15 @@ class enrol_payumoney_plugin extends enrol_plugin {
     public function get_action_icons(stdClass $instance) {
         global $OUTPUT;
 
-        if ($instance->enrol !== 'payumoney') {
+        if ($instance->enrol !== 'flutter') {
             throw new coding_exception('invalid enrol instance!');
         }
         $context = context_course::instance($instance->courseid);
 
         $icons = array();
 
-        if (has_capability('enrol/payumoney:config', $context)) {
-            $editlink = new moodle_url("/enrol/payumoney/edit.php",
+        if (has_capability('enrol/flutter:config', $context)) {
+            $editlink = new moodle_url("/enrol/flutter/edit.php",
                                        array('courseid' => $instance->courseid, 'id' => $instance->id));
             $icons[] = $OUTPUT->action_icon($editlink, new pix_icon('t/edit', get_string('edit'), 'core',
                     array('class' => 'iconsmall')));
@@ -146,12 +146,12 @@ class enrol_payumoney_plugin extends enrol_plugin {
     public function get_newinstance_link($courseid) {
         $context = context_course::instance($courseid, MUST_EXIST);
 
-        if (!has_capability('moodle/course:enrolconfig', $context) or !has_capability('enrol/payumoney:config', $context)) {
+        if (!has_capability('moodle/course:enrolconfig', $context) or !has_capability('enrol/flutter:config', $context)) {
             return null;
         }
 
         // Multiple instances supported - different cost for different roles.
-        return new moodle_url('/enrol/payumoney/edit.php', array('courseid' => $courseid));
+        return new moodle_url('/enrol/flutter/edit.php', array('courseid' => $courseid));
     }
     /**
      * Creates course enrol form, checks if form submitted
@@ -200,7 +200,7 @@ class enrol_payumoney_plugin extends enrol_plugin {
 
         if (abs($cost) < 0.01) {
             // No cost, other enrolment methods (instances) should be used.
-            echo '<p>'.get_string('nocost', 'enrol_payumoney').'</p>';
+            echo '<p>'.get_string('nocost', 'enrol_flutter').'</p>';
         } else {
 
             // Calculate localised and "." cost, make sure we send PayUMoney.com the same value,
@@ -232,7 +232,7 @@ class enrol_payumoney_plugin extends enrol_plugin {
                 $usercity        = $USER->city;
                 $instancename    = $this->get_instance_name($instance);
 
-                include($CFG->dirroot.'/enrol/payumoney/enrolment_form.php');
+                include($CFG->dirroot.'/enrolflutter/enrolment_form.php');
             }
 
         }
@@ -293,12 +293,12 @@ class enrol_payumoney_plugin extends enrol_plugin {
         $instance = $ue->enrolmentinstance;
         $params = $manager->get_moodlepage()->url->params();
         $params['ue'] = $ue->id;
-        if ($this->allow_unenrol($instance) && has_capability("enrol/payumoney:unenrol", $context)) {
+        if ($this->allow_unenrol($instance) && has_capability("enrol/flutter:unenrol", $context)) {
             $url = new moodle_url('/enrol/unenroluser.php', $params);
             $actions[] = new user_enrolment_action(new pix_icon('t/delete', ''), get_string('unenrol', 'enrol'), $url,
                                                    array('class' => 'unenrollink', 'rel' => $ue->id));
         }
-        if ($this->allow_manage($instance) && has_capability("enrol/payumoney:manage", $context)) {
+        if ($this->allow_manage($instance) && has_capability("enrol/flutter:manage", $context)) {
             $url = new moodle_url('/enrol/editenrolment.php', $params);
             $actions[] = new user_enrolment_action(new pix_icon('t/edit', ''), get_string('edit'), $url,
                                                    array('class' => 'editenrollink', 'rel' => $ue->id));
@@ -321,7 +321,7 @@ class enrol_payumoney_plugin extends enrol_plugin {
      */
     public function can_delete_instance($instance) {
         $context = context_course::instance($instance->courseid);
-        return has_capability('enrol/payumoney:config', $context);
+        return has_capability('enrol/flutter:config', $context);
     }
     /**
      * Is it possible to hide/show enrol instance via standard UI?
@@ -331,6 +331,6 @@ class enrol_payumoney_plugin extends enrol_plugin {
      */
     public function can_hide_show_instance($instance) {
         $context = context_course::instance($instance->courseid);
-        return has_capability('enrol/payumoney:config', $context);
+        return has_capability('enrol/flutter:config', $context);
     }
 }

@@ -23,7 +23,7 @@
  */
 
 require("../../config.php");
-require_once("$CFG->dirroot/enrol/payumoney/lib.php");
+require_once("$CFG->dirroot/enrol/flutter/lib.php");
 
 $id = required_param('id', PARAM_INT);
 

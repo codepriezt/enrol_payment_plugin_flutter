@@ -25,5 +25,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $messageproviders = array(
-    'payumoney_enrolment' => array(),
+    'flutter_enrolment' => array(),
 );

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="enrol/payumoney/db" VERSION="2015061501" COMMENT="XMLDB file for Moodle enrol/payumoney"
+<XMLDB PATH="enrol/flutter/db" VERSION="2019102001" COMMENT="XMLDB file for Moodle enrol/flutter"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../lib/xmldb/xmldb.xsd">
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
   <TABLES>
-    <TABLE NAME="enrol_payumoney" COMMENT="Holds all known information about PayUMoney transactions">
+    <TABLE NAME="enrol_flutter" COMMENT="Holds all known information about PayUMoney transactions">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
      
