@@ -1,8 +1,11 @@
 <?php
 
+$decoded = file_get_contents("php://input");
 
-$decoded = $_POST['form'];
-var_dump($decoded);
+$object  = json_decode($decoded);
+
+var_dump($object);
+
 
 
 ?>

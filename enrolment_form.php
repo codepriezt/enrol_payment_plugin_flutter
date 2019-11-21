@@ -145,10 +145,14 @@ function payWithRave(e){
 
         var httpc = new XMLHttpRequest();
 
-        httpc.open('POST' , url , true)
-        httpc.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        httpc.send(form);
-             
+        const json = JSON.stringify(form);
+
+        httpc.open("POST" , url);
+
+        httpc.setRequestHeader("Content-Type", "application/json");
+        
+        httpc.send(json);
+
     }
 		
 </script>
