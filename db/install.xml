@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <XMLDB PATH="enrol/payumoney/db" VERSION="2015061501" COMMENT="XMLDB file for Moodle enrol/payumoney"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+    xsi:noNamespaceSchemaLocation="../../lib/xmldb/xmldb.xsd">
   <TABLES>
     <TABLE NAME="enrol_payumoney" COMMENT="Holds all known information about PayUMoney transactions">
       <FIELDS>
