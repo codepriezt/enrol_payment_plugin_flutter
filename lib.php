@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class enrol_payumoney_plugin extends enrol_plugin {
+class enrol_flutter_plugin extends enrol_plugin {
     /**
      * Lists all currencies available for plugin.
      * @return $currencies

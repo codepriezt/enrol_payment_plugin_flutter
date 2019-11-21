@@ -50,7 +50,7 @@ $enrolpayumoney->timeupdated = time();
 
 
 
-$ret1 = $DB->insert_record("enrol_payumoney_nigeria", $enrolpayumoney, true);
+$ret1 = $DB->insert_record("enrol_flutter", $enrolpayumoney, true);
 var_dump($ret1);
 return($ret1);
 
