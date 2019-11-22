@@ -42,18 +42,18 @@ $id = required_param('id', PARAM_INT);
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
 
-$responsearray = $response->auth_json;
+$responsearray = json_decode($response->auth_json , true);
 print_r($responsearray);
 
-$txnid = $responsearray->txref;
-$amount = $responsearray->amount;
-$email = $responsearray->email;
-$courseid = $responsearray->courseid;
-$userid = $responsearray->userid;
-$status = $responsearray->status;
-$contextid= $responsearray->contextid;
-$instanceid = $responsearray->instanceid;
-$status = $responsearray->status;
+$txnid = $responsearray[0]['txref'];
+$amount = $responsearray[0]['amount'];
+$email = $responsearray[0]['email'];
+$courseid = $responsearray[0]['courseid'];
+$userid = $responsearray[0]['userid'];
+$status = $responsearray[0]['status'];
+$contextid= $responsearray[0]['contextid'];
+$instanceid = $responsearray[0]['instanceid'];
+
 
  print_r($txnid , $amount );
  print_r($email );
