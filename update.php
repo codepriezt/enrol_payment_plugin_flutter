@@ -42,7 +42,7 @@ $id = required_param('id', PARAM_INT);
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
 
-$responsearray = json_decode($response->auth_json);
+$responsearray = $response->auth_json;
 print_r($responsearray);
 
 $txnid = $responsearray->txref;
