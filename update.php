@@ -37,7 +37,7 @@ require_once($CFG->libdir . '/filelib.php');
 global $DB, $CFG;
 
 $id = required_param('id', PARAM_INT);
-print_r($id);
+
 
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
@@ -45,15 +45,17 @@ $response = $DB->get_record('enrol_flutter', array('id' => $id));
 $responsearray = json_decode($response->auth_json, true);
 print_r($responsearray);
 
-$txnid = $responsearray['txref'];
-$amount = $responsearray['amount'];
-$email = $responsearray['email'];
-$courseid = $responsearray['courseid'];
-$userid = $responsearray['userid'];
-$status = $responsearray['status'];
-$contextid= $responsearray['contextid'];
-$instanceid = $responsearray['instanceid'];
+$txnid = $responsearray->txref;
+$amount = $responsearray->amount;
+$email = $responsearray->email;
+$courseid = $responsearray->courseid;
+$userid = $responsearray->userid;
+$status = $responsearray->status;
+$contextid= $responsearray->contextid;
+$instanceid = $responsearray->instanceid;
+$status = $responsearray->status;
 
+print_r($txnid , $amount , $email , $courseid , $userid ,$status , $contextid ,$instanceid);
 
 // if (! $user = $DB->get_record("user", array("id" => $userid))) {
 //     print_error("Not a valid user id"); die;
@@ -67,7 +69,7 @@ $instanceid = $responsearray['instanceid'];
 //     print_error("Not a valid context id"); die;
 // }
 
-// if (! $plugininstance = $DB->get_record("enrol", array("id" => $instanceid, "status" => 0))) {
+// if (! $plugininstance = $DB->get_record("enrol", array("id" => $instanceid,))) {
 //     print_error("Not a valid instance id"); die;
 // }
 
