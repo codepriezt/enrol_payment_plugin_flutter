@@ -11,13 +11,13 @@ global $DB, $CFG ;
 
 $decoded = file_get_contents("php://input");
 
-$enrolpayumoney = new stdClass();
+$enrolflutter = new stdClass();
 
-$enrolpayumoney->auth_json = json_encode($decoded);
-$enrolpayumoney->timeupdated = time();
+$enrolflutter->auth_json = json_encode($decoded);
+$enrolflutter->timeupdated = time();
 
 
-$ret1 = $DB->insert_record("enrol_flutter", $enrolpayumoney, true);
+$ret1 = $DB->insert_record("enrol_flutter", $enrolflutter, true);
 
 
 
