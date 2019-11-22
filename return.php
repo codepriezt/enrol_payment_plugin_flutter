@@ -46,7 +46,7 @@ if (!empty($SESSION->wantsurl)) {
 $fullname = format_string($course->fullname, true, array('context' => $context));
 // $fullname = format_string($course->fullname , true);
 
-if (is_enrolled($course, null, '', true)) {
+if (is_enrolled($context, null, '', true)) {
     redirect($destination, get_string('paymentthanks', '', $fullname));
 } else {
     $PAGE->set_url($destination);
