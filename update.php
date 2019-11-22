@@ -32,9 +32,9 @@
 require("../../config.php");
 require_once("lib.php");
 require_once($CFG->libdir.'/enrollib.php');
-require_once($CFG->libdir . '/filelphp');
+require_once($CFG->libdir . '/filelib.php');
 
-global $DB, $CFG , $data;
+global $DB, $CFG;
 
 $id = required_param('id', PARAM_INT);
 print_r($id);
