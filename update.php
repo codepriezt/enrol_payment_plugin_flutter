@@ -42,7 +42,7 @@ $id = required_param('id', PARAM_INT);
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
 
-$responsearray = json_decode($response->auth_json, true);
+$responsearray = json_decode($response->auth_json);
 print_r($responsearray);
 
 $txnid = $responsearray->txref;
@@ -55,7 +55,11 @@ $contextid= $responsearray->contextid;
 $instanceid = $responsearray->instanceid;
 $status = $responsearray->status;
 
-print_r($txnid , $amount , $email , $courseid , $userid ,$status , $contextid ,$instanceid);
+ print_r($txnid , $amount );
+ print_r($email );
+ print_r($courseid , $userid );
+ print_r($status , $contextid );
+ print_r($instanceid);
 
 // if (! $user = $DB->get_record("user", array("id" => $userid))) {
 //     print_error("Not a valid user id"); die;
