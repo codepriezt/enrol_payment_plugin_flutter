@@ -153,19 +153,17 @@ function payWithRave(e){
         
         httpc.send(json);
 
+        locate(url);
+
+    }
+
+    function locate(url)
+    {
+        window.location.href= url;
     }
 		
 </script>
 
-<?php
 
-echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/flutter/record.php";
-     </script>';
-
-die;
-
-?>
-	
 
 
