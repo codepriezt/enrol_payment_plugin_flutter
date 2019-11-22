@@ -47,7 +47,7 @@ $fullname = format_string($course->fullname, true, array('context' => $context))
 // $fullname = format_string($course->fullname , true);
 
 if (is_enrolled($context, null, '', true)) {
-    redirect($destination, get_string('paymentthanks', '', $fullname));
+    redirect($destination);
 } else {
     $PAGE->set_url($destination);
     echo $OUTPUT->header();
