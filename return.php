@@ -32,6 +32,9 @@ if (!$course = $DB->get_record("course", array("id" => $id))) {
 }
 
 $context = context_course::instance($course->id, MUST_EXIST);
+
+
+
 $PAGE->set_context($context);
 
 require_login();
