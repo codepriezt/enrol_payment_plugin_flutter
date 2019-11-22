@@ -153,14 +153,11 @@ function payWithRave(e){
         
         httpc.send(json);
 
-        setTimeout(locate(url) , 5000);
+       
 
     }
 
-    function locate(url)
-    {
-        window.location.assign= url;
-    }
+   
 		
 </script>
 
