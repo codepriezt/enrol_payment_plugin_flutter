@@ -150,7 +150,7 @@ if ($status == "successful") {
 }
 
 echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/return.php?id='.$courseid.'";
+     window.location.href="'.$CFG->wwwroot.'/enrol/flutter/return.php?id='.$courseid.'";
      </script>';
 die;
 
