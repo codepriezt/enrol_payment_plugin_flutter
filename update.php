@@ -119,7 +119,7 @@ $enrolflutter->timeupdated = time();
 // /* Inserting value to enrol_flutter table */
 $ret1 = $DB->update_record("enrol_flutter", $enrolflutter, false);
 
-var_dump($ret1);
+
 
 
 if ($status == "successful") {
@@ -135,7 +135,7 @@ if ($status == "successful") {
     $userenrolments->timemodified = time();
     $ret2 = $DB->insert_record("user_enrolments", $userenrolments, false);
 
-    var_dump($ret2);
+    
     /* Inserting value to role_assignments table */
     $roleassignments->roleid = 5;
     $roleassignments->contextid = $contextid;
@@ -146,9 +146,13 @@ if ($status == "successful") {
     $roleassignments->itemid = 0;
     $roleassignments->sortorder = 0;
     $ret3 = $DB->insert_record('role_assignments', $roleassignments, false);
-
-    var_dump($ret3);
+   
 }
+
+echo '<script type="text/javascript">
+     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/return.php?id='.$courseid.'";
+     </script>';
+die;
 
 
 
