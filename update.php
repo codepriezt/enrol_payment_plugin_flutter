@@ -83,8 +83,10 @@ $enrolflutter->id = $id;
 $enrolflutter->courseid = $courseid;
 $enrolflutter->userid = $userid;
 $enrolflutter->instanceid = $instanceid;
+$enrolflutter->contextid = $contextid;
 $enrolflutter->amount = $amount;
-// //$enrolpayumoney->tax = $responsearray['tax'];
+$enrolfluter->email = $email;
+
 
 
 
@@ -101,73 +103,9 @@ if ($status == "successful") {
     } else {
         $teacher = false;
     }
-
+}
     $plugin = enrol_get_plugin('flutter');
 
-   
-  
-
-    if (!empty($mailstudents)) {
-        $a = new stdClass();
-        $a->coursename = format_string($course->fullname, true, array('context' => $coursecontext));
-        $a->profileurl = "$CFG->wwwroot/user/view.php?id=$user->id";
-
-        $eventdata = new \core\message\message();
-        $eventdata->courseid          = $course->id;
-        $eventdata->modulename        = 'moodle';
-        $eventdata->component         = 'enrol_flutter';
-        $eventdata->name              = 'flutter_enrolment';
-        $eventdata->userfrom          = empty($teacher) ? core_user::get_noreply_user() : $teacher;
-        $eventdata->userto            = $user;
-        $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
-        $eventdata->fullmessage       = get_string('welcometocoursetext', '', $a);
-        $eventdata->fullmessageformat = FORMAT_PLAIN;
-        $eventdata->fullmessagehtml   = '';
-        $eventdata->smallmessage      = '';
-        message_send($eventdata);
-
-    }
-
-    if (!empty($mailteachers) && !empty($teacher)) {
-        $a->course = format_string($course->fullname, true, array('context' => $coursecontext));
-        $a->user = fullname($user);
-
-        $eventdata = new \core\message\message();
-        $eventdata->courseid          = $course->id;
-        $eventdata->modulename        = 'moodle';
-        $eventdata->component         = 'enrol_flutter';
-        $eventdata->name              = 'flutter_enrolment';
-        $eventdata->userfrom          = $user;
-        $eventdata->userto            = $teacher;
-        $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
-        $eventdata->fullmessage       = get_string('enrolmentnewuser', 'enrol', $a);
-        $eventdata->fullmessageformat = FORMAT_PLAIN;
-        $eventdata->fullmessagehtml   = '';
-        $eventdata->smallmessage      = '';
-        message_send($eventdata);
-    }
-
-    if (!empty($mailadmins)) {
-        $a->course = format_string($course->fullname, true, array('context' => $coursecontext));
-        $a->user = fullname($user);
-        $admins = get_admins();
-        foreach ($admins as $admin) {
-            $eventdata = new \core\message\message();
-            $eventdata->courseid          = $course->id;
-            $eventdata->modulename        = 'moodle';
-            $eventdata->component         = 'enrol_flutter';
-            $eventdata->name              = 'flutter_enrolment';
-            $eventdata->userfrom          = $user;
-            $eventdata->userto            = $admin;
-            $eventdata->subject           = get_string("enrolmentnew", 'enrol', $shortname);
-            $eventdata->fullmessage       = get_string('enrolmentnewuser', 'enrol', $a);
-            $eventdata->fullmessageformat = FORMAT_PLAIN;
-            $eventdata->fullmessagehtml   = '';
-            $eventdata->smallmessage      = '';
-            message_send($eventdata);
-        }
-    }
-}
 if ($status == "pending") {
     $enrolpayumoney->payment_status = 'Held for Review';
 }
@@ -179,7 +117,7 @@ if ($status == "failure") {
 $enrolflutter->txref = $txref;
 
 $enrolflutter->timeupdated = time();
-// /* Inserting value to enrol_payumoney table */
+// /* Inserting value to enrol_flutter table */
 $ret1 = $DB->update_record("enrol_flutter", $enrolflutter, false);
 
 if ($status == "successful") {
