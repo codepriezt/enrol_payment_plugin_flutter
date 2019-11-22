@@ -85,10 +85,7 @@ $enrolflutter->userid = $userid;
 $enrolflutter->instanceid = $instanceid;
 $enrolflutter->contextid = $contextid;
 $enrolflutter->amount = $amount;
-$enrolfluter->email = $email;
-
-
-
+$enrolflutter->email = $email;
 
 if ($status == "successful") {
     $enrolflutter->status = 'Approved';
@@ -107,10 +104,10 @@ if ($status == "successful") {
     $plugin = enrol_get_plugin('flutter');
 
 if ($status == "pending") {
-    $enrolpayumoney->payment_status = 'Held for Review';
+    $enrolflutter->status = 'Held for Review';
 }
 if ($status == "failure") {
-    $enrolpayumoney->payment_status = 'Declined due to some Error';
+    $enrolflutter->status = 'Declined due to some Error';
 }
 
 
@@ -119,6 +116,9 @@ $enrolflutter->txref = $txref;
 $enrolflutter->timeupdated = time();
 // /* Inserting value to enrol_flutter table */
 $ret1 = $DB->update_record("enrol_flutter", $enrolflutter, false);
+
+
+var_dump($ret1);
 
 if ($status == "successful") {
     /* Inserting value to user_enrolments table */
@@ -132,6 +132,8 @@ if ($status == "successful") {
     $userenrolments->timecreated = time();
     $userenrolments->timemodified = time();
     $ret2 = $DB->insert_record("user_enrolments", $userenrolments, false);
+
+    var_dump($ret2);
     /* Inserting value to role_assignments table */
     $roleassignments->roleid = 5;
     $roleassignments->contextid = $contextid;
@@ -142,11 +144,9 @@ if ($status == "successful") {
     $roleassignments->itemid = 0;
     $roleassignments->sortorder = 0;
     $ret3 = $DB->insert_record('role_assignments', $roleassignments, false);
+
+    var_dump($ret3);
 }
 
-echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/payumoney/return.php?id='.$courseid.'";
-     </script>';
-die;
 
 
