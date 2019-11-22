@@ -44,17 +44,17 @@ $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
 $responsearray = json_decode($response->auth_json);
 
+$cct = json_decode($responsearray , true);
+var_dump($cct);
 
-var_dump($responsearray[0]);
-
-$txnid = $responsearray[0]["txref"];
-$amount = $responsearray[0]->amount;
-$email = $responsearray[0]->email;
-$courseid = $responsearray[0]->courseid;
-$userid = $responsearray[0]->userid;
-$status = $responsearray[0]->status;
-$contextid= $responsearray[0]->contextid;
-$instanceid = $responsearray[0]->instanceid;
+$txnid = $cct["txref"];
+$amount = $cct["amount"];
+$email = $cct["email"];
+$courseid = $cct["courseid"];
+$userid = $cct["userid"];
+$status = $cct["status"];
+$contextid= $cct["contextid"];
+$instanceid = $cct["instanceid"];
 
 
  print_r($txnid);
