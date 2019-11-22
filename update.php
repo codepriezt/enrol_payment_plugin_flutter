@@ -63,7 +63,7 @@ if (! $user = $DB->get_record("user", array("id" => $userid))) {
     print_error("Not a valid user id"); die;
 }
 
-if (! $course = $DB->get_record("course", array("id"=> $contextid))) {
+if (! $course = $DB->get_record("course", array("id"=> $courseid))) {
     print_error("Not a valid course id"); die;
 }
 
@@ -71,7 +71,7 @@ if (! $context = context_course::instance($contextid, IGNORE_MISSING)) {
     print_error("Not a valid context id"); die;
 }
 
-if (! $plugininstance = $DB->get_record("enrol", array("id" => $instanceid,))) {
+if (! $plugininstance = $DB->get_record("enrol", array("id" => $instanceid))) {
     print_error("Not a valid instance id"); die;
 }
 
