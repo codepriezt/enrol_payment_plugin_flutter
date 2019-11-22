@@ -59,6 +59,7 @@ $instanceid = $cct["instanceid"];
 
 
 
+
 if (! $user = $DB->get_record("user", array("id" => $userid))) {
     print_error("Not a valid user id"); die;
 }
@@ -67,7 +68,7 @@ if (! $course = $DB->get_record("course", array("id"=> $courseid))) {
     print_error("Not a valid course id"); die;
 }
 
-if (! $context = context_course::instance($contextid, IGNORE_MISSING)) {
+if (! $context = context_course::instance($courseid, IGNORE_MISSING)) {
     print_error("Not a valid context id"); die;
 }
 
