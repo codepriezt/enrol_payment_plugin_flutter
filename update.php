@@ -45,7 +45,7 @@ $response = $DB->get_record('enrol_flutter', array('id' => $id));
 $responsearray = json_decode($response->auth_json);
 
 $cct = json_decode($responsearray , true);
-var_dump($cct);
+
 
 $txref = $cct["txref"];
 $amount = $cct["amount"];
@@ -116,10 +116,10 @@ if ($status == "failure") {
 
 $enrolflutter->timeupdated = time();
 
-var_dump($enrolflutter);
 // /* Inserting value to enrol_flutter table */
-// $ret1 = $DB->update_record("enrol_flutter", $enrolflutter, false);
+$ret1 = $DB->update_record("enrol_flutter", $enrolflutter, false);
 
+var_dump($ret1);
 
 
 // if ($status == "successful") {
