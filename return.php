@@ -38,27 +38,25 @@ $PAGE->set_context($context);
 
 require_login();
 
-// if (!empty($SESSION->wantsurl)) {
-//     $destination = $SESSION->wantsurl;
-//     unset($SESSION->wantsurl);
-// } else {
-//     $destination = "$CFG->wwwroot/course/view.php?id=$course->id";
-// }
-
-// $fullname = format_string($course->fullname, true, array('context' => $context));
-// $fullname = format_string($course->fullname , true);
-
-// if (is_enrolled($context, null, '', true)) {
-//     redirect($destination);
-// } else {
-//     $PAGE->set_url($destination);
-//     echo $OUTPUT->header();
-//     $a = new stdClass();
-//     $a->teacher = get_string('defaultcourseteacher');
-//     $a->fullname = $fullname;
-//     notice(get_string('paymentsorry', '', $a), $destination);
-// }
-
-if($context){
-    $destination = "$CFG->wwwroot/course/view.php?id=$course->id"; 
+if (!empty($SESSION->wantsurl)) {
+    $destination = $SESSION->wantsurl;
+    unset($SESSION->wantsurl);
+} else {
+    $destination = "$CFG->wwwroot/course/view.php?id=$course->id";
 }
+
+$fullname = format_string($course->fullname, true, array('context' => $context));
+$fullname = format_string($course->fullname , true);
+
+if (!is_enrolled($context, null, '', true)) {
+    redirect($destination);
+} else {
+    $PAGE->set_url($destination);
+    echo $OUTPUT->header();
+    $a = new stdClass();
+    $a->teacher = get_string('defaultcourseteacher');
+    $a->fullname = $fullname;
+    notice(get_string('paymentsorry', '', $a), $destination);
+}
+
+ 
