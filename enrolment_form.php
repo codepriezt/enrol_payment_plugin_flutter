@@ -153,8 +153,6 @@ function payWithRave(e){
         
         httpc.send(json);
 
-       
-
     }
 
    
