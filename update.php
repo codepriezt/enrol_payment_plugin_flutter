@@ -42,9 +42,9 @@ $id = required_param('id', PARAM_INT);
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
 
-$cct = json_decode($response->auth_json , true);
+$responsearray= json_decode($response->auth_json , true);
 
-// $cct = json_decode($responsearray , true);
+$cct = json_decode($responsearray , true);
 
 
 $txref = $cct["txref"];
