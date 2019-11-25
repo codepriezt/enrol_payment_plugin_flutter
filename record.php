@@ -16,16 +16,21 @@ $enrolflutter = new stdClass();
 $enrolflutter->auth_json = json_encode($decoded);
 $enrolflutter->timeupdated = time();
 
+print_r($decoded);
+
+print_r($enrolflutter);
+
+
 
 $ret1 = $DB->insert_record("enrol_flutter", $enrolflutter, true);
 
+print_r($ret1);
 
+// echo '<script type="text/javascript">
+//      window.location.href="'.$CFG->wwwroot.'/enrol/flutter/update.php?id='.$ret1.'";
+//      </script>';
 
-echo '<script type="text/javascript">
-     window.location.href="'.$CFG->wwwroot.'/enrol/flutter/update.php?id='.$ret1.'";
-     </script>';
-
-die;
+// die;
 
 
 
