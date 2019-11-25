@@ -11,8 +11,9 @@ global $DB, $CFG ;
 
 $decoded = file_get_contents("php://input");
 
+$dec = json_decode($decoded);
 
-var_dump($decoded);
+var_dump($dec);
 
 
 
