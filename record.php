@@ -9,9 +9,11 @@ require_once($CFG->libdir . '/filelib.php');
 global $DB, $CFG ;
 
 
-$decoded = file_get_contents("php://input");
+// $decoded = file_get_contents("php://input");
 
+$decoded = explode(",", $_REQUEST["json"]);
 
+print_r($decoded);
 
 
 $enrolflutter = new stdClass();
