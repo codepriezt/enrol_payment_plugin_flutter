@@ -11,9 +11,13 @@ global $DB, $CFG ;
 
 // $decoded = file_get_contents("php://input");
 
-$decoded = $_POST['json'];
+$decoded = $_POST;
 
 var_dump($decoded);
+
+$dec = $_POST['form'];
+
+var_dump($dec);
 
 $enrolflutter = new stdClass();
 
