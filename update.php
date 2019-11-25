@@ -41,8 +41,10 @@ $id = required_param('id', PARAM_INT);
 
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
+print_r($response);
 
-$cct= json_decode($response->auth_json , true);
+
+// $cct= json_decode($response->auth_json , true);
 
 // $cct = json_decode($responsearray , true);
 
