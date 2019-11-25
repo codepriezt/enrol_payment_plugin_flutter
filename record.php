@@ -9,14 +9,18 @@ require_once($CFG->libdir . '/filelib.php');
 global $DB, $CFG ;
 
 
-$decoded = file_get_contents("php://input");
+// $decoded = file_get_contents("php://input");
+
+$decoded = $_POST['json'];
+
+var_dump($decoded);
 
 $enrolflutter = new stdClass();
 
 $enrolflutter->auth_json = json_encode($decoded);
 $enrolflutter->timeupdated = time();
 
-var_dump($decoded);
+
 
 var_dump($enrolflutter);
 
