@@ -1,5 +1,5 @@
 <?php
-define('NO_DEBUG_DISPLAY', false);
+define('NO_DEBUG_DISPLAY', true);
 
 require("../../config.php");
 require_once("lib.php");
@@ -11,20 +11,15 @@ global $DB, $CFG ;
 
 $decoded = file_get_contents("php://input");
 
-$dec = json_decode($decoded);
-
-var_dump($dec);
 
 
 
+$enrolflutter = new stdClass();
 
+$enrolflutter->auth_json = json_decode($decoded);
+$enrolflutter->timeupdated = time();
 
-// $enrolflutter = new stdClass();
-
-// $enrolflutter->auth_json = json_encode($decoded);
-// $enrolflutter->timeupdated = time();
-
-
+var_dump($enrolflutter);
 
 
 

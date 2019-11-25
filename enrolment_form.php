@@ -17,9 +17,8 @@
 /**
  * PayUMoney.com enrolment plugin - enrolment form.
  *
- * @package    enrol_payumoney
- * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    enrol_flutter
+ * @author     Codepriezt
  */
 
 
@@ -70,7 +69,7 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 </div>
 <style type="text/css">
 #sub_button{
-  background: url("<?php echo $CFG->wwwroot; ?>/enrol/payumoney/pix/paynow.png") no-repeat scroll 0 0 transparent;
+  background: url("<?php echo $CFG->wwwroot; ?>/enrol/flutter/pix/index.png") no-repeat scroll 0 0 transparent;
   color: #000000;
   cursor: pointer;
   font-weight: bold;
