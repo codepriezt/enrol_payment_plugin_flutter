@@ -127,7 +127,7 @@ function payWithRave(e){
                             'contextid':contextid,
                             'status':data.tx.status
              }
-                    verify(form)
+                    console.log(form);
                 } else {
                     console.log(data);
                 }
