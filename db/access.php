@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Capabilities for PayUMoney.com enrolment plugin.
+ * Capabilities for Flutter.com enrolment plugin.
  *
- * @package    enrol_payumoney
- * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    enrol_flutter
+ * @author     codepriezt
+ *
  */
 
 defined('MOODLE_INTERNAL') || die();

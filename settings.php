@@ -17,9 +17,9 @@
 /**
  * PayUMoney.com enrolments plugin settings and presets.
  *
- * @package    enrol_payumoney
- * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    enrol_flutter
+ * @author     codepriezt
+ *
  */
 
 defined('MOODLE_INTERNAL') || die();

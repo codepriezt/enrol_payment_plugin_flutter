@@ -18,15 +18,12 @@
  * Strings for component 'enrol_flutterdotcom', language 'en'.
  *
  * @package    enrol_flutterdotcom
- * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @author     codepriezt
  */
 
 $string['pluginname'] = 'Flutter';
 $string['pluginname_desc'] = 'The Flutter module allows you to set up paid courses.  If the cost for any course is zero, then students are not asked to pay for entry.  There is a site-wide cost that you set here as a default for the whole site and then a course setting that you can set for each course individually. The course cost overrides the site cost.';
 $string['mailadmins'] = 'Notify admin';
-$string['mailstudents'] = 'Notify students';
-$string['mailteachers'] = 'Notify teachers';
 $string['expiredaction'] = 'Enrolment expiration action';
 $string['expiredaction_help'] = 'Select action to carry out when user enrolment expires. Please note that some user data and settings are purged from course during course unenrolment.';
 $string['cost'] = 'Enrol cost';

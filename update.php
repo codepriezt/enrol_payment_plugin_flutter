@@ -20,9 +20,9 @@
  * This script waits for Payment notification from PayUMoney.com, 
  * then it sets up the enrolment for that user.
  *
- * @package    enrol_payumoney
- * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    enrol_flutter
+ * @author     codepriezt
+ 
  */
 
 // Disable moodle specific debug messages and any errors in output,

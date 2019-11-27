@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir.'/formslib.php');
 /**
  * Sets up moodle edit form class methods.
- * @copyright  2017 Exam Tutor, Venkatesan R Iyengar
+ * @author     codepriezt    
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class enrol_flutter_edit_form extends moodleform {

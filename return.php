@@ -17,9 +17,8 @@
 /**
  * PayUMoney.com utility script
  *
- * @package    enrol_payumoneydotcom
- * @copyright  2015 Dualcube, Moumita Ray, Parthajeet Chakraborty
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    enrol_flutterdotcom
+ * @author     codepriezt
  */
 
 require("../../config.php");
