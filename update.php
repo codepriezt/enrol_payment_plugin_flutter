@@ -38,17 +38,15 @@ global $DB, $CFG;
 
 $id = required_param('id', PARAM_INT);
 
-print_r($id);
 
 $response = $DB->get_record('enrol_flutter', array('id' => $id));
 
-print_r($response);
+
 
 $cct= json_decode($response->auth_json);
 
-print_r($cct);
 
-// $cct = json_decode($responsearray , true);
+$cct = json_decode($cct, true);
 
 
 $txref = $cct["txref"];
