@@ -11,7 +11,6 @@ global $DB, $CFG ;
 
 $decoded = file_get_contents("php://input");
 
-print_r($decoded);
 
 
 $enrolflutter = new stdClass();
@@ -19,14 +18,12 @@ $enrolflutter = new stdClass();
 $enrolflutter->auth_json = json_decode($decoded);
 $enrolflutter->timeupdated = time();
 
-print_r($enrolflutter);
 
 
 
+$ret1 = $DB->insert_record("enrol_flutter", $enrolflutter, true);
 
-// $ret1 = $DB->insert_record("enrol_flutter", $enrolflutter, true);
-
-// var_dump($ret1);
+print_r($ret1);
 
 // echo '<script type="text/javascript">
 //      window.location.href="'.$CFG->wwwroot.'/enrol/flutter/update.php?id='.$ret1.'";
