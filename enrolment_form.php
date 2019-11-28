@@ -143,13 +143,15 @@ function payWithRave(e){
 
         httpc.onload = function()
         {
-            console.log('Done :' , httpc.status);
+            console.log('Done :' , httpc.status)
+
+            if(httpc.status == 200)
+                {
+                    location.assign(url);
+                }
         }
 
-        if(httpc.status == 200)
-        {
-            assign(url)
-        }
+       
         
         httpc.send(json);
       
@@ -157,10 +159,7 @@ function payWithRave(e){
     }
 
 
-    function assign(url)
-    {
-        window.location.assign(url);
-    }
+    
 
    
 		
