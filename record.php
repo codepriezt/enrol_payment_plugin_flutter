@@ -26,11 +26,11 @@ echo $ret1;
 
 die;
 
-// echo '<script type="text/javascript">
-//      window.location.href="'.$CFG->wwwroot.'/enrol/flutter/update.php?id='.$ret1.'";
-//      </script>';
+echo '<script type="text/javascript">
+     window.location.href="'.$CFG->wwwroot.'/enrol/flutter/update.php?id='.$ret1.'";
+     </script>';
 
-// die;
+die;
 
 
 

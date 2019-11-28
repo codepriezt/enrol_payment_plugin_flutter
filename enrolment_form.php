@@ -148,15 +148,22 @@ function payWithRave(e){
             if(httpc.status === 200)
                 {
                     console.log(httpc.responseText);
+                    id = httpc.responseText
+                    assign(id)
                 }
         }
 
        
-        
         httpc.send(json);
       
 
     }
+
+    function assign(id)
+    {
+        window.location.href =`$CFG->wwwroot.'/enrol/flutter/update.php?id=${id}`;
+    }
+
 
 
     
