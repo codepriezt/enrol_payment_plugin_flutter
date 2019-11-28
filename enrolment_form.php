@@ -147,7 +147,7 @@ function payWithRave(e){
 
             if(httpc.status == 200)
                 {
-                    location.assign(url);
+                    setTimeOut(location.assign(url),60000);
                 }
         }
 
