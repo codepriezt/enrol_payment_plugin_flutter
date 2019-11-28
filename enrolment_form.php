@@ -140,10 +140,15 @@ function payWithRave(e){
         httpc.open("POST" , url);
 
         httpc.setRequestHeader("Content-Type", "application/json");
+
+        httpc.onload = function()
+        {
+            console.log('Done' . httpc.status);
+        }
         
         httpc.send(json);
 
-        assign(url);
+         
 
     }
 
