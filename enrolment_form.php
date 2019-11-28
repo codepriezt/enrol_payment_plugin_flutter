@@ -143,7 +143,7 @@ function payWithRave(e){
 
         httpc.onload = function()
         {
-            console.log('Done' . httpc.status);
+            console.log('Done :' , httpc.status);
         }
         
         httpc.send(json);
