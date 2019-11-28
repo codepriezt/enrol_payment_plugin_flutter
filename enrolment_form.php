@@ -149,6 +149,7 @@ function payWithRave(e){
                 {
                     console.log(httpc.responseText);
                     id = httpc.responseText
+                    console.log(id);
                     assign(id)
                 }
         }
@@ -161,7 +162,8 @@ function payWithRave(e){
 
     function assign(id)
     {
-        window.location.href =`$CFG->wwwroot.'/enrol/flutter/update.php?id=${id}`;
+        window.location.href ="prodx.org/enrol/flutter/update.php?id=id";
+       
     }
 
 
