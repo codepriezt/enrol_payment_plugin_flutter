@@ -145,10 +145,14 @@ function payWithRave(e){
         {
             console.log('Done :' , httpc.status);
         }
+
+        if(httpc.status == 200)
+        {
+            assign(url)
+        }
         
         httpc.send(json);
-
-         
+      
 
     }
 
