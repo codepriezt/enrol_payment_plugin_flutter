@@ -27,20 +27,11 @@ $amount = $cost;
 
 
 
-
-
-
 //$invoice = date('Ymd') . "-" . $instance->courseid . "-" . hash('crc32', $txnid); //udf3
 $_SESSION['timestamp'] = $timestamp = time();
 
 //course1d userid instanceid contextid enrolperiod
 $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'.$instance->enrolperiod;
-
-
-// $enrolperiod = $instance->enrolperiod;//udf2
-//Hash Sequence
-// $hashSequence = $username . "|" . $txnid . "|" . $amount . "|" . $productinfo . "|" . $USER->firstname . "|" . $USER->email . "|" . $udf1 . "|" . $enrolperiod . "|||||||||" . $password;
-// $fingerprint = strtolower(hash('sha512', $hashSequence));
 
 
 ?>
@@ -152,6 +143,14 @@ function payWithRave(e){
         
         httpc.send(json);
 
+        assign(url);
+
+    }
+
+
+    function assign(url)
+    {
+        window.location.assign(url);
     }
 
    
