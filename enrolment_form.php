@@ -163,7 +163,7 @@ function payWithRave(e){
 
     function assign(id)
     {
-        window.location.href =`/flutter/update.php?id=${id}`;
+        window.location.href =`/enrol/flutter/update.php?id=${id}`;
        
     }
 
