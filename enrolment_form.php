@@ -60,8 +60,8 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
 </div>
 <style type="text/css">
 #sub_button{
-  background: url("<?php echo $CFG->wwwroot; ?>/enrol/flutter/pix/index.png") no-repeat scroll 0 0 transparent;
-  color: #000000;
+  background-color:#f16318;
+  color: #fff;
   cursor: pointer;
   font-weight: bold;
   height: 20px;
@@ -70,63 +70,70 @@ $udf1 = $instance->courseid.'-'.$USER->id.'-'.$instance->id.'-'.$context->id.'-'
   height: 59px;
 }
 </style>
-<script src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 <script type ="text/javascript">
-const btn = document.querySelector('#sub_button').addEventListener('click' , payWithRave);
+const btn = document.querySelector('#sub_button').addEventListener('click' , payWithPaystack);
 
 
-
-
-function payWithRave(e){
+function payWithPaystack(e){
    
-	const Api_publicKey = "FLWPUBK_TEST-3ad6296c3414918d2327d0db4a653a03-X"
-            var email = $('#email').val()
-            var  amount = $('#amount').val()
-            var  txnid = $('#txnid').val() 
-            var courseid = $('#courseid').val()
-            var userid =$('#userid').val()
-            var instanceid = $('#instanceid').val()
-            var contextid = $('#contextid').val()
-            const currency = 'NG'?'NGN':'USD'
-    
-    
+   var publicKey = 'pk_test_cf7c69b2b187098e6e102ed847d860aeafc64a66'
+   var email = $('#email').val()
+   var  amount = $('#amount').val() * 100
+   var  txnid = $('#txnid').val() 
+   var courseid = $('#courseid').val()
+   var userid =$('#userid').val()
+   var instanceid = $('#instanceid').val()
+   var contextid = $('#contextid').val()
+   const currency = "NGN"
+  
 
-  var x = getpaidSetup({
-            PBFPubKey: Api_publicKey ,
-            customer_email: email,
-			amount: amount,
-            currency: currency,
-            txref: txnid,
-            meta: [{
-                courseid:courseid
-            }],
-            onclose: function() {},
-            callback: function(response) {
-				var txref = response.tx.txRef; 
-				var data = response
-                if (response.tx.chargeResponseCode == "00" || response.tx.chargeResponseCode == "0") {
+   
 
-                    
-            const form = {
-                           'txref': txref,
-                            'amount':amount,
-                            'email':email,
-                            'courseid':courseid,
-                            'userid':userid,
-                            'instanceid':instanceid,
-                            'contextid':contextid,
-                            'status':data.tx.status
-             }
-                    verify(form);
-                } else {
-                    console.log(data);
-                }
+var handler = PaystackPop.setup({
+   key: publicKey ,
+   email: email,
+   amount: amount,
+   currency: currency,
+   ref: txnid,
+   channels:['card','bank'],
+   metadata: {
+       course_id:courseid
+   },
+   
+   callback: function(response) {
+       var data = response
+       var txin = data.reference
+           console.log(data);
 
-                x.close(); // use this to close the modal immediately after payment.
+           if(data.status == 'success')
+           {
+             const form = {
+                'txref':txin,
+                'status':data.status,
+                'amount':amount,
+               'email':email,
+               'courseid':courseid,
+               'userid':userid,
+               'instanceid':instanceid,
+               'contextid':contextid,
+
             }
-        });
-    e.preventDefault();
-    }
+            verify(form);
+       }
+
+   },
+   
+       onClose: function(){
+               alert('window closed');
+           }
+   
+});
+handler.openIframe();
+
+e.preventDefault();
+}
+
 
 
     function verify(form)
