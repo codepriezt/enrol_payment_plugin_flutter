@@ -24,6 +24,7 @@
 
 require('../../config.php');
 require_once('edit_form.php');
+require_once('lib.php');
 
 $courseid   = required_param('courseid', PARAM_INT);
 $instanceid = optional_param('id', 0, PARAM_INT);
@@ -105,3 +106,13 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading(get_string('pluginname', 'enrol_flutter'));
 $mform->display();
 echo $OUTPUT->footer();
+
+require_once($CFG->libdir.'/moodlelib.php');
+
+$body = "Thank you for the Payment. You've Successfully Enrolled for"." ".$course->fullname."<br/><br/>"."Click on the link below to proceed to your Course Dashboard."."<br/>
+$a->courselink. '{$CFG->wwwroot}/course/view.php?id={$course->id}';
+<br/>"."Thanks,"."<br/>Admin";
+
+
+email_to_user($user,$USER,'Enrollment Notification','The text of the message',$body);
+echo json_encode($outcome);
